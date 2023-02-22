@@ -27,172 +27,70 @@
                     Add new employee
                   </a>
                   </div>
+
+                  <div class="modal fade" id="modal-report" tabindex="-1" aria-labelledby="modal-report" aria-hidden="true">
+                     <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                              <h1 class="modal-title fs-5" id="exampleModalLabel">Employee Details</h1>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                    
+                          
+                          <div class="modal-body">
+                            
+                          <div class="mb-3">
+                              <label class="form-label">Name</label>
+                              <input type="text" class="form-control" name="example-text-input" placeholder="Input placeholder">
+                            </div>
+
+                            <div class="mb-3">
+                              <label class="form-label">Title<span class="form-label-description">56/100</span></label>
+                              <textarea class="form-control" name="example-textarea-input" rows="6" placeholder="Content..">Oh! Come and see the violence inherent in the system! Help, help, I'm being repressed! We shall say 'Ni' again to you, if you do not appease us. I'm not a witch. I'm not a witch. Camelot!</textarea>
+                            </div>
+
+                            <div class="mb-3">
+                              <label class="form-label">Address <span class="form-label-description">56/100</span></label>
+                              <textarea class="form-control" name="example-textarea-input" rows="6" placeholder="Content..">Oh! Come and see the violence inherent in the system! Help, help, I'm being repressed! We shall say 'Ni' again to you, if you do not appease us. I'm not a witch. I'm not a witch. Camelot!</textarea>
+                            </div>
+
+                            <div class="mb-3">
+                            <label class="form-label">Email address</label>
+                            <input type="email" class="form-control" placeholder="Email">
+                          </div>
+          
+                          <div class="mb-3">
+                              <label class="form-label">Phone number</label>
+                              <input type="tel" class="form-control" autocomplete="off">
+                            </div>
+                  </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <a href="#" class="btn btn-primary ms-auto" data-bs-dismiss="modal">
+              <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M12 5l0 14"></path><path d="M5 12l14 0"></path></svg>
+              Create new employee
+            </a>
+                
+                </div>
+                </div>
+                </div>
+                </div>
+
+
                 <table class="table table-vcenter table-mobile-md card-table">
                       <thead>
                         <tr>
                           <th>Name</th>
                           <th>Title</th>
                           <th>Email</th>
-                          <th>Role</th>
+                          <th>Mobile</th>
                           <th>Basic Salary</th>
                           <th>Action</th>
                           <th class="w-1"></th>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td data-label="Name">
-                            <div class="d-flex py-1 align-items-center">
-                              <span class="avatar me-2" style="background-image: url(./static/avatars/010m.jpg)"></span>
-                              <div class="flex-fill">
-                                <div class="font-weight-medium">Thatcher Keel</div>
-                                <div class="text-muted"><a href="#" class="text-reset">tkeelf@blogger.com</a></div>
-                              </div>
-                            </div>
-                          </td>
-                          <td data-label="Title">
-                            <div>VP Sales</div>
-                            <div class="text-muted">Business Development</div>
-                          </td>
-                          <td class="text-muted" data-label="Role">
-                            User
-                          </td>
-                          <td class="text-muted" data-label="Role">
-                            User
-                          </td>
-                          <td class="text-muted" data-label="Role">
-                            User
-                          </td>
-                          <td>
-                            <div class="btn-list flex-nowrap">
-                            <div class="col-6 col-sm-4 col-md-2 col-xl py-3">
-                        <a href="#" class="btn btn-success w-100">
-                          Edit
-                        </a>
-                      </div>
-                      <div class="col-6 col-sm-4 col-md-2 col-xl py-3">
-                        <a href="#" class="btn btn-danger w-100">
-                          Delete
-                        </a>
-                      </div>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td data-label="Name">
-                            <div class="d-flex py-1 align-items-center">
-                              <span class="avatar me-2" style="background-image: url(./static/avatars/005f.jpg)"></span>
-                              <div class="flex-fill">
-                                <div class="font-weight-medium">Dyann Escala</div>
-                                <div class="text-muted"><a href="#" class="text-reset">descalag@usatoday.com</a></div>
-                              </div>
-                            </div>
-                          </td>
-                          <td data-label="Title">
-                            <div>Mechanical Systems Engineer</div>
-                            <div class="text-muted">Sales</div>
-                          </td>
-                          <td class="text-muted" data-label="Role">
-                            Admin
-                          </td>
-                          <td class="text-muted" data-label="Role">
-                            Admin
-                          </td>
-                          <td class="text-muted" data-label="Role">
-                            Admin
-                          </td>
-                          <td>
-                            <div class="btn-list flex-nowrap">
-                            <div class="col-6 col-sm-4 col-md-2 col-xl py-3">
-                        <a href="#" class="btn btn-success w-100">
-                          Edit
-                        </a>
-                      </div>
-                      <div class="col-6 col-sm-4 col-md-2 col-xl py-3">
-                        <a href="#" class="btn btn-danger w-100">
-                          Delete
-                        </a>
-                      </div>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td data-label="Name">
-                            <div class="d-flex py-1 align-items-center">
-                              <span class="avatar me-2" style="background-image: url(./static/avatars/006f.jpg)"></span>
-                              <div class="flex-fill">
-                                <div class="font-weight-medium">Avivah Mugleston</div>
-                                <div class="text-muted"><a href="#" class="text-reset">amuglestonh@intel.com</a></div>
-                              </div>
-                            </div>
-                          </td>
-                          <td data-label="Title">
-                            <div>Actuary</div>
-                            <div class="text-muted">Sales</div>
-                          </td>
-                          <td class="text-muted" data-label="Role">
-                            User
-                          </td>
-                          <td class="text-muted" data-label="Role">
-                            User
-                          </td>
-                          <td class="text-muted" data-label="Role">
-                            User
-                          </td>
-                          <td>
-                            <div class="btn-list flex-nowrap">
-                            <div class="col-6 col-sm-4 col-md-2 col-xl py-3">
-                        <a href="#" class="btn btn-success w-100">
-                          Edit
-                        </a>
-                      </div>
-                      <div class="col-6 col-sm-4 col-md-2 col-xl py-3">
-                        <a href="#" class="btn btn-danger w-100">
-                          Delete
-                        </a>
-                      </div>
-                              </div>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td data-label="Name">
-                            <div class="d-flex py-1 align-items-center">
-                              <span class="avatar me-2">AA</span>
-                              <div class="flex-fill">
-                                <div class="font-weight-medium">Arlie Armstead</div>
-                                <div class="text-muted"><a href="#" class="text-reset">aarmsteadi@yellowpages.com</a></div>
-                              </div>
-                            </div>
-                          </td>
-                          <td data-label="Title">
-                            <div>VP Quality Control</div>
-                            <div class="text-muted">Accounting</div>
-                          </td>
-                          <td class="text-muted" data-label="Role">
-                            Owner
-                          </td>
-                          <td class="text-muted" data-label="Role">
-                            Owner
-                          </td>
-                          <td class="text-muted" data-label="Role">
-                            Owner
-                          </td>
-                          <td>
-                            <div class="btn-list flex-nowrap">
-                            <div class="col-6 col-sm-4 col-md-2 col-xl py-3">
-                        <a href="#" class="btn btn-success w-100">
-                          Edit
-                        </a>
-                      </div>
-                      <div class="col-6 col-sm-4 col-md-2 col-xl py-3">
-                        <a href="#" class="btn btn-danger w-100">
-                          Delete
-                        </a>
-                      </div>
-                            </div>
-                          </td>
-                        </tr>
                         <tr>
                           <td data-label="Name">
                             <div class="d-flex py-1 align-items-center">
@@ -219,16 +117,94 @@
                           <td>
                             <div class="btn-list flex-nowrap">
                             <div class="col-6 col-sm-4 col-md-2 col-xl py-3">
-                        <a href="#" class="btn btn-success w-100">
-                          Edit
-                        </a>
-                      </div>
-                      <div class="col-6 col-sm-4 col-md-2 col-xl py-3">
-                        <a href="#" class="btn btn-danger w-100">
-                          Delete
-                        </a>
-                      </div>
+                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            Edit
+                            </button>
+                            <button type="button" class="btn btn-danger  " data-bs-toggle="modal" data-bs-target="#deleterow">
+                            Delete
+                            </button>
                             </div>
+
+
+
+
+                            <div class="modal fade" id="deleterow" tabindex="-1" aria-labelledby="deleterow" aria-hidden="true">
+                                <div class="modal-dialog">
+                                <div class="modal-status bg-danger"></div>
+                                        <div class="modal-content">
+                                                <div class="modal-header">
+                                                  <h1 class="modal-title fs-5" id="deleterow">Record Deleted</h1>
+                                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                            <div class="modal-body">
+                                            <div class="text-muted">Record deleted successfully.</div>
+                                              </div>
+                                              <div class="modal-footer">
+                                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                              </div>
+                                              </div>
+                                       </div>
+                                  </div>
+
+
+
+
+
+
+                            <div class="modal fade" id="staticBackdrop" tabindex="-1" aria-labelledby="staticBackdrop" aria-hidden="true">
+                     <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                              <h1 class="modal-title fs-5" id="exampleModalLabel">Employee Details</h1>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                    
+                          
+                          <div class="modal-body">
+                            
+                          <div class="mb-3">
+                              <label class="form-label">Name</label>
+                              <input type="text" class="form-control" name="example-text-input" placeholder="Input placeholder">
+                            </div>
+
+                            <div class="mb-3">
+                              <label class="form-label">Title<span class="form-label-description">56/100</span></label>
+                              <textarea class="form-control" name="example-textarea-input" rows="6" placeholder="Content..">Web Developer</textarea>
+                            </div>
+
+                            <div class="mb-3">
+                              <label class="form-label">Address <span class="form-label-description">56/100</span></label>
+                              <textarea class="form-control" name="example-textarea-input" rows="6" placeholder="Content..">Oh! Come and see the violence inherent in the system! Help, help, I'm being repressed! We shall say 'Ni' again to you, if you do not appease us. I'm not a witch. I'm not a witch. Camelot!</textarea>
+                            </div>
+
+                            <div class="mb-3">
+                            <label class="form-label">Email address</label>
+                            <input type="email" class="form-control" placeholder="Email">
+                          </div>
+          
+                          <div class="mb-3">
+                              <label class="form-label">Phone number</label>
+                              <input type="tel" class="form-control" autocomplete="off">
+                            </div>
+                  </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <a href="#" class="btn btn-primary ms-auto" data-bs-dismiss="modal">
+    
+              Save Changes
+            </a>
+                
+                </div>
+                </div>
+                </div>
+                </div>
+
+
+
+
+        </div>
+
+
                           </td>
                         </tr>
                       </tbody>
@@ -238,8 +214,7 @@
         </div>
     </div>
     <!-- Page body -->
-    <div class="page-body">
-    </div>
+   
     </body>
 </html>
     <?php include('footer.php') ?>
