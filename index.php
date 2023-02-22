@@ -27,7 +27,7 @@
                     Add new employee
                   </a>
                   </div>
-
+<form action="add.php" method="post">
                   <div class="modal fade" id="modal-report" tabindex="-1" aria-labelledby="modal-report" aria-hidden="true">
                      <div class="modal-dialog">
                         <div class="modal-content">
@@ -38,7 +38,6 @@
                     
                           
                           <div class="modal-body">
-                            
                           <div class="mb-3">
                               <label class="form-label">Name</label>
                               <input type="text" class="form-control" name="example-text-input" placeholder="Input placeholder">
@@ -58,6 +57,11 @@
                             <label class="form-label">Email address</label>
                             <input type="email" class="form-control" placeholder="Email">
                           </div>
+
+                          <div class="mb-3">
+                              <label class="form-label">Basic Salary</label>
+                              <input type="tel" class="form-control" autocomplete="off">
+                            </div>
           
                           <div class="mb-3">
                               <label class="form-label">Phone number</label>
@@ -76,13 +80,14 @@
                 </div>
                 </div>
                 </div>
-
+                </form>
 
                 <table class="table table-vcenter table-mobile-md card-table">
                       <thead>
                         <tr>
                           <th>Name</th>
                           <th>Title</th>
+                          <th>Address</th>
                           <th>Email</th>
                           <th>Mobile</th>
                           <th>Basic Salary</th>
@@ -96,23 +101,26 @@
                             <div class="d-flex py-1 align-items-center">
                               <span class="avatar me-2" style="background-image: url(./static/avatars/008f.jpg)"></span>
                               <div class="flex-fill">
-                                <div class="font-weight-medium">Tessie Curzon</div>
-                                <div class="text-muted"><a href="#" class="text-reset">tcurzonj@hp.com</a></div>
+                                <div class="font-weight-medium">Mithun</div>
+                                <div class="text-muted"><a href="#" class="text-reset">Msc.Com.Sc</a></div>
                               </div>
                             </div>
                           </td>
                           <td data-label="Title">
-                            <div>Research Nurse</div>
-                            <div class="text-muted">Product Management</div>
+                            <div>Trainee</div>
+                            <div class="text-muted">Web Developing Team</div>
                           </td>
                           <td class="text-muted" data-label="Role">
-                            Admin
+                          23, Anthoniyar Kovil Street, Madhagadi, Karaikal.
                           </td>
                           <td class="text-muted" data-label="Role">
-                            Admin
+                          mitchellmithun@gmail.com
                           </td>
                           <td class="text-muted" data-label="Role">
-                            Admin
+                            8870328532
+                          </td>
+                          <td class="text-muted" data-label="Role">
+                            2,000
                           </td>
                           <td>
                             <div class="btn-list flex-nowrap">
@@ -181,7 +189,12 @@
                             <label class="form-label">Email address</label>
                             <input type="email" class="form-control" placeholder="Email">
                           </div>
-          
+
+                          <div class="mb-3">
+                              <label class="form-label">Basic Salary</label>
+                              <input type="tel" class="form-control" autocomplete="off">
+                            </div>
+
                           <div class="mb-3">
                               <label class="form-label">Phone number</label>
                               <input type="tel" class="form-control" autocomplete="off">
