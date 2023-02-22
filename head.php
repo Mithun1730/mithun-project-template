@@ -13,4 +13,6 @@
     <link href="dist/css/demo.min.css?1674944402" rel="stylesheet"/>
     <link rel="stylesheet" href="dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="dist/js/bootstrap.min.js">
+    <link rel="stylesheet" href="dist/js/jquery-3.6.3.min.js">
+    <link rel="stylesheet" href="dist/js/jquery.min.js">
   </head>

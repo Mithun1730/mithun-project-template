@@ -8,6 +8,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="button.css">
+  <link rel="stylesheet" href="dist/js/jquery.min.js">
+  <script>
+  function adduser(){
+    var Name=$('#name').val();
+    var Title=$('#title').val();
+    var Address=$('#address').val();
+    var Email=$('#email').val();
+    var Salary=$('#salary').val();
+    var Mobile=$('#mobile').val();
+
+    $.ajax({
+      url:"add.php",
+      type:"post",
+      data: {
+        NameSend:Name,
+        TitleSend:Title,
+        AddressSend:Address,
+        EmailSend:Email,
+        SalarySend:Salary,
+        MobileSend:Mobile
+      },
+      success:function(data,status){
+        console.log(status);
+      }
+    });
+  }
+</script>
+
 </head>
 <body>
   
@@ -27,7 +55,7 @@
                     Add new employee
                   </a>
                   </div>
-<form action="add.php" method="post">
+
                   <div class="modal fade" id="modal-report" tabindex="-1" aria-labelledby="modal-report" aria-hidden="true">
                      <div class="modal-dialog">
                         <div class="modal-content">
@@ -40,36 +68,36 @@
                           <div class="modal-body">
                           <div class="mb-3">
                               <label class="form-label">Name</label>
-                              <input type="text" class="form-control" name="example-text-input" placeholder="Input placeholder">
+                              <input type="text" id="name" class="form-control" name="example-text-input" placeholder="Input placeholder">
                             </div>
 
                             <div class="mb-3">
                               <label class="form-label">Title<span class="form-label-description">56/100</span></label>
-                              <textarea class="form-control" name="example-textarea-input" rows="6" placeholder="Content..">Oh! Come and see the violence inherent in the system! Help, help, I'm being repressed! We shall say 'Ni' again to you, if you do not appease us. I'm not a witch. I'm not a witch. Camelot!</textarea>
+                              <textarea class="form-control" id="title" name="example-textarea-input" rows="6" placeholder="Content..">Oh! Come and see the violence inherent in the system! Help, help, I'm being repressed! We shall say 'Ni' again to you, if you do not appease us. I'm not a witch. I'm not a witch. Camelot!</textarea>
                             </div>
 
                             <div class="mb-3">
                               <label class="form-label">Address <span class="form-label-description">56/100</span></label>
-                              <textarea class="form-control" name="example-textarea-input" rows="6" placeholder="Content..">Oh! Come and see the violence inherent in the system! Help, help, I'm being repressed! We shall say 'Ni' again to you, if you do not appease us. I'm not a witch. I'm not a witch. Camelot!</textarea>
+                              <textarea class="form-control" id="address" name="example-textarea-input" rows="6" placeholder="Content..">Oh! Come and see the violence inherent in the system! Help, help, I'm being repressed! We shall say 'Ni' again to you, if you do not appease us. I'm not a witch. I'm not a witch. Camelot!</textarea>
                             </div>
 
                             <div class="mb-3">
                             <label class="form-label">Email address</label>
-                            <input type="email" class="form-control" placeholder="Email">
+                            <input type="email" id="email" class="form-control" placeholder="Email">
                           </div>
 
                           <div class="mb-3">
                               <label class="form-label">Basic Salary</label>
-                              <input type="tel" class="form-control" autocomplete="off">
+                              <input type="tel" id="salary" class="form-control" autocomplete="off">
                             </div>
           
                           <div class="mb-3">
                               <label class="form-label">Phone number</label>
-                              <input type="tel" class="form-control" autocomplete="off">
+                              <input type="tel" id="mobile" class="form-control" autocomplete="off">
                             </div>
                   </div>
                 <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" onclick="adduser()" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 <a href="#" class="btn btn-primary ms-auto" data-bs-dismiss="modal">
               <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
               <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M12 5l0 14"></path><path d="M5 12l14 0"></path></svg>
@@ -80,7 +108,9 @@
                 </div>
                 </div>
                 </div>
-                </form>
+
+
+
 
                 <table class="table table-vcenter table-mobile-md card-table">
                       <thead>
@@ -177,27 +207,27 @@
 
                             <div class="mb-3">
                               <label class="form-label">Title<span class="form-label-description">56/100</span></label>
-                              <textarea class="form-control" name="example-textarea-input" rows="6" placeholder="Content..">Web Developer</textarea>
+                              <textarea class="form-control"  name="example-textarea-input" rows="6" placeholder="Content..">Web Developer</textarea>
                             </div>
 
                             <div class="mb-3">
                               <label class="form-label">Address <span class="form-label-description">56/100</span></label>
-                              <textarea class="form-control" name="example-textarea-input" rows="6" placeholder="Content..">Oh! Come and see the violence inherent in the system! Help, help, I'm being repressed! We shall say 'Ni' again to you, if you do not appease us. I'm not a witch. I'm not a witch. Camelot!</textarea>
+                              <textarea class="form-control"  name="example-textarea-input" rows="6" placeholder="Content..">Oh! Come and see the violence inherent in the system! Help, help, I'm being repressed! We shall say 'Ni' again to you, if you do not appease us. I'm not a witch. I'm not a witch. Camelot!</textarea>
                             </div>
 
                             <div class="mb-3">
                             <label class="form-label">Email address</label>
-                            <input type="email" class="form-control" placeholder="Email">
+                            <input type="email"  class="form-control" placeholder="Email">
                           </div>
 
                           <div class="mb-3">
                               <label class="form-label">Basic Salary</label>
-                              <input type="tel" class="form-control" autocomplete="off">
+                              <input type="tel"  class="form-control" autocomplete="off">
                             </div>
 
                           <div class="mb-3">
                               <label class="form-label">Phone number</label>
-                              <input type="tel" class="form-control" autocomplete="off">
+                              <input type="tel"   class="form-control" autocomplete="off">
                             </div>
                   </div>
                 <div class="modal-footer">
