@@ -1,5 +1,6 @@
 <?php include('head.php') ?>
 <?php include('navbar.php') ?>
+<?php include('connect.php')?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -96,7 +97,9 @@
                       $.ajax({
                       url: "add.php",
                       method:"POST",
-                      data:{name:name,title:title,address:address,email:email,salary:salary,mobile:mobile},
+                      data:{name:name,title:title,
+                        address:address,email:email,
+                        salary:salary,mobile:mobile},
                       });
                     });
                   }); 
