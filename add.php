@@ -1,5 +1,9 @@
 <?php
 include "connnect.php";
+include "head.php";
+include "navbar.php";
+include "footer";
+
 
 extract($_POST);
 

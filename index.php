@@ -34,12 +34,12 @@
                         <div class="modal-content">
                           <div class="modal-header">
                               <h1 class="modal-title fs-5" id="exampleModalLabel">Employee Details</h1>
-                              <button type="button" id="adduser" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                           </div>
                     
-                          
+                          <form action="add.php" method="post">
                           <div class="modal-body">
-                          <form role="form">
+                       
                           <div class="form-group">
                               <label class="form-label">Name</label>
                               <input type="text" id="name" class="form-control" name="example-text-input" placeholder="Input placeholder">
@@ -69,17 +69,18 @@
                               <label class="form-label">Phone number</label>
                               <input type="tel" id="mobile" class="form-control" autocomplete="off">
                             </div>
-                            </form>
+                           
                         </div>
                 <div class="modal-footer">
-                  <button type="button"  class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  <a href="#" class="btn btn-primary ms-auto" data-bs-dismiss="modal">
-                  <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
+                  <button type="button"   class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="submit" name="adduser" class="btn btn-primary">
+                  
                   <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M12 5l0 14"></path><path d="M5 12l14 0"></path></svg>
                     Create new employee
                   </a>
-                
+                  </button>
                 </div>
+                          </form>
                 </div>
                 </div>
                 </div>
