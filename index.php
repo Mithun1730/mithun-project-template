@@ -1,6 +1,5 @@
 <?php include('head.php') ?>
 <?php include('navbar.php') ?>
-<?php include('connect.php')?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,38 +41,38 @@
                        
                           <div class="form-group">
                               <label class="form-label">Name</label>
-                              <input type="text" id="name" class="form-control" name="example-text-input" placeholder="Input placeholder">
+                              <input type="text" id="name" class="form-control" name="name" placeholder="Input placeholder">
                           </div>
 
                           <div class="form-group">
                               <label class="form-label">Title<span class="form-label-description">56/100</span></label>
-                              <textarea class="form-control" id="title" name="example-textarea-input" rows="6" placeholder="Content.."></textarea>
+                              <textarea class="form-control" id="title" name="title" rows="6" placeholder="Content.."></textarea>
                             </div>
 
                             <div class="form-group">
                               <label class="form-label">Address <span class="form-label-description">56/100</span></label>
-                              <textarea class="form-control" id="address" name="example-textarea-input" rows="6" placeholder="Content.."></textarea>
+                              <textarea class="form-control" id="address" name="address" rows="6" placeholder="Content.."></textarea>
                             </div>
 
                             <div class="form-group">
                               <label class="form-label">Email address</label>
-                              <input type="email" id="email" class="form-control" placeholder="example@gmail.com">
+                              <input type="email" id="email" name="email" class="form-control" placeholder="example@gmail.com">
                             </div>
 
                             <div class="form-group">
                               <label class="form-label">Basic Salary</label>
-                              <input type="tel" id="salary" class="form-control" autocomplete="off">
+                              <input type="tel" id="salary" name="salary" class="form-control" autocomplete="off">
                             </div>
           
                             <div class="form-group">
                               <label class="form-label">Phone number</label>
-                              <input type="tel" id="mobile" class="form-control" autocomplete="off">
+                              <input type="tel" id="mobile" name='mobile' class="form-control" autocomplete="off">
                             </div>
                            
                         </div>
                 <div class="modal-footer">
                   <button type="button"   class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  <button type="submit" name="adduser" class="btn btn-primary">
+                  <button type="submit" id="adduser "name="adduser" class="btn btn-primary">
                   
                   <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M12 5l0 14"></path><path d="M5 12l14 0"></path></svg>
                     Create new employee
@@ -85,27 +84,7 @@
                 </div>
                 </div>
 
-                <script>
-                    $(document).ready(function(){
-                    $("#adduser").click(function(){
-                    var name = $('#name').val();
-                    var title = $('#title').val();
-                    var address = $('#address').val();
-                    var email = $('#email').val();
-                    var salary = $('#salary').val();
-                    var mobile = $('#mobile').val();
-
-                      $.ajax({
-                      url: "add.php",
-                      method:"POST",
-                      data:{name:name,title:title,
-                        address:address,email:email,
-                        salary:salary,mobile:mobile},
-                      });
-                    });
-                  }); 
-                </script>
-
+               
 
                 <table class="table table-vcenter table-mobile-md card-table">
                       <thead>
