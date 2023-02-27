@@ -1,27 +1,17 @@
 <?php
-include "connect.php";
-include "head.php";
-include "navbar.php";
-
-if(isset($_POST['adduser']))
-{
+include 'connect.php';
+if(isset($_POST['adduser'])){
 $name=$_POST['name'];
-$title=$_POST['title'];
-$address=$_POST['address'];
-$mobile=$_POST['mobile'];
-$salary=$_POST['salary'];
-$email=$_POST['email'];
+$title=$_POST['name'];
+$address=$_POST['name'];
+$email=$_POST['name'];
+$salary=$_POST['name'];
+$mobile=$_POST['name'];
 
-if(isset($_POST['name']) && isset($_POST['title']) 
-&& isset($_POST['address']) && isset($_POST['email']) 
-&& isset($_POST['salary']) && isset($_POST['mobile']) 
-){
-  $sql= "INSERT INTO employees('employee_name', 'title', 'employee_address', 'employee_email', 'emoloyee_mobile', 'basic_salary') VALUES ('$name','$title','$address','$email','$mobile','$salary')";
-}
-$result=mysqli_query($sql,$conn);
+$sql="INSERT INTO `employees`(`employee_name`, `title`, `employee_address`, `employee_email`, `basic_salary`, `employee_mobile`) VALUES ('$name','$title','$address','$email','$salary','$mobile')";
+$result=mysqli_query($conn,$sql);
 if($result){
-  echo "Inserted Successfully";
+  header("location:index.php");
 }
 }
-include "footer";
 ?>

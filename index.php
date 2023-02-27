@@ -1,5 +1,6 @@
 <?php include('head.php') ?>
 <?php include('navbar.php') ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,9 +8,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="button.css">
+  <link rel="stylesheet" href="button.css"> <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>  
 </head>
 <body>
+
+
+
   
 <div class="page-wrapper">
     <!-- Page header -->
@@ -36,7 +40,7 @@
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                           </div>
                     
-                          <form action="add.php" method="post">
+                          <form action="add.php" method="POST" id="insertform">
                           <div class="modal-body">
                        
                           <div class="form-group">
@@ -84,8 +88,12 @@
                 </div>
                 </div>
 
-               
 
+<?php
+include ('connect.php');
+  $query= 'SELECT * FROM employees';
+  $result=mysqli_query($conn,$query);
+  ?>
                 <table class="table table-vcenter table-mobile-md card-table">
                       <thead>
                         <tr>
@@ -99,32 +107,35 @@
                           <th class="w-1"></th>
                         </tr>
                       </thead>
+<?php
+                      if($result){
+  foreach ($result as $row){
+    ?>
                       <tbody>
-                        <tr>
+                          <tr>
                           <td data-label="Name">
                             <div class="d-flex py-1 align-items-center">
-                              <span class="avatar me-2" style="background-image: url(./static/avatars/008f.jpg)"></span>
+                              
                               <div class="flex-fill">
-                                <div class="font-weight-medium">Mithun</div>
-                                <div class="text-muted"><a href="#" class="text-reset">Msc.Com.Sc</a></div>
+                                <div class="font-weight-medium"><?php echo $row['employee_name'];?></div>
                               </div>
                             </div>
                           </td>
                           <td data-label="Title">
-                            <div>Trainee</div>
-                            <div class="text-muted">Web Developing Team</div>
+                            <div><?php echo $row['title'];?></div>
+           
                           </td>
                           <td class="text-muted" data-label="Role">
-                          23, Anthoniyar Kovil Street, Madhagadi, Karaikal.
+                          <?php echo $row['employee_address'];?>
                           </td>
                           <td class="text-muted" data-label="Role">
-                          mitchellmithun@gmail.com
+                          <?php echo $row['employee_email'];?>
                           </td>
                           <td class="text-muted" data-label="Role">
-                            8870328532
+                          <?php echo $row['employee_mobile'];?>
                           </td>
                           <td class="text-muted" data-label="Role">
-                            2,000
+                          <?php echo $row['basic_salary'];?>
                           </td>
                           <td>
                             <div class="btn-list flex-nowrap">
@@ -132,33 +143,48 @@
                             <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                             Edit
                             </button>
-                            <button type="button" class="btn btn-danger  " data-bs-toggle="modal" data-bs-target="#deleterow">
+                            <button type="button" id="deletebutton" class="btn btn-danger  " data-bs-toggle="modal" data-bs-target="#deleterow">
                             Delete
                             </button>
                             </div>
+                            <?php
+  }
+}
+  ?>
 
 
 
 
-                            <div class="modal fade" id="deleterow" tabindex="-1" aria-labelledby="deleterow" aria-hidden="true">
-                                <div class="modal-dialog">
-                                <div class="modal-status bg-danger"></div>
-                                        <div class="modal-content">
-                                                <div class="modal-header">
-                                                  <h1 class="modal-title fs-5" id="deleterow">Record Deleted</h1>
-                                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                        </div>
-                                            <div class="modal-body">
-                                            <div class="text-muted">Record deleted successfully.</div>
-                                              </div>
-                                              <div class="modal-footer">
-                                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                              </div>
-                                              </div>
-                                       </div>
-                                  </div>
 
 
+       <div class="modal fade" id="deleterow" tabindex="-1" aria-labelledby="deleterow" aria-hidden="true">
+      <div class="modal-dialog">
+       <div class="modal-status bg-danger"></div>
+      <div class="modal-content">
+  <div class="modal-header">
+          <h1 class="modal-title fs-5" id="deleterow">Record Deleted</h1>
+  <button type="button" name="delete" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+           </div>
+    <div class="modal-body">
+  <div class="text-muted">Record deleted successfully.</div>
+ </div>
+ <div class="modal-footer">
+<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+</div>
+</div>
+</div>
+</div>
+
+<script>
+  $(document).ready(function(){
+    $("#deletebutton").click(function(){
+      $.ajax({
+   url:"delete.php",
+   method:"POST",
+    });
+  });
+  });
+</script>
 
 
 
