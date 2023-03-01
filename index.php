@@ -11,13 +11,10 @@
   <title>Document</title>
   <link rel="stylesheet" href="button.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 </head>
 
 <body>
-
-
-
-
   <div class="page-wrapper">
     <!-- Page header -->
     <div class="page-header d-print-none">
@@ -171,7 +168,8 @@
                   <div class="modal fade" id="staticBackdrop" tabindex="-1" aria-labelledby="staticBackdrop" aria-hidden="true">
                     <div class="modal-dialog">
                       <div class="modal-content">
-                        <form action="update.php" method="POST" id="editform">
+                        <form action="update.php" method="GET" id="editform">
+                       
                           <div class="modal-header">
                             <h1 class="modal-title fs-5" id="exampleModalLabel">Employee Details</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -182,6 +180,7 @@
 
                             <div class="mb-3">
                               <label class="form-label">Name</label>
+                              <input type="hidden" id="editid" name="editid">
                               <input type="text" class="form-control" name="name" id="nameid" placeholder="Input placeholder">
                             </div>
 

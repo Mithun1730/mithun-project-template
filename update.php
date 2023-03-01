@@ -1,14 +1,16 @@
 <?php
 include "connect.php";
-if(isset($_POST['edit']))
+if(isset($_POST['edituser']))
 {
-    $id=$_POST['editdata'];
-    $name=$_POST['name'];
+    $id=$_GET['editid'];
+    $name=$_GET['name'];
     $title=$_POST['title'];
     $address=$_POST['address'];
     $email=$_POST['email'];
     $salary=$_POST['salary'];
     $mobile=$_POST['number'];
-
-    $sql="UPDATE `employees` SET `employee_name`='$name',`title`='$title',`employee_address`='$address',`employee_email`='$email',`basic_salary`='$salary',`employee_mobile`='$mobile' WHERE 'employee_id'=$id";
+    
+    echo $id;
+    echo $name;
+   
 }
