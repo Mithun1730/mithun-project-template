@@ -121,7 +121,7 @@
             <?php
             if ($result) {
               foreach ($result as $row) {
-                $id=$row['employee_id'];
+                $id = $row['employee_id'];
             ?>
                 <tbody>
                   <tr>
@@ -152,11 +152,11 @@
                     <td>
                       <div class="btn-list flex-nowrap">
                         <div class="col-6 col-sm-4 col-md-2 col-xl py-3">
-                          <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                          <button type="button" class="btn btn-warning edit_data" data-bs-toggle="modal" data-bs-target="#staticBackdrop" name="edit" id="<?php echo $row['employee_id'] ?>">
                             Edit
                           </button>
-                          <button type="button"  id="deletebutton" name="deletebutton" class="btn btn-danger  " data-bs-toggle="modal" data-bs-target="#deleterow">
-                           <a href="delete.php?deleteid = '.$id.'" class="text-light" >Delete</a> 
+                          <button type="button" id="deletebutton" name="deletebutton" class="btn btn-danger deletebutton " data-bs-toggle="modal" data-bs-target="#deleterow" id="<?php echo $row['employee_id'] ?>">
+                            Delete</button>
                           </button>
                         </div>
                       </div>
@@ -171,59 +171,60 @@
                   <div class="modal fade" id="staticBackdrop" tabindex="-1" aria-labelledby="staticBackdrop" aria-hidden="true">
                     <div class="modal-dialog">
                       <div class="modal-content">
-                        <div class="modal-header">
-                          <h1 class="modal-title fs-5" id="exampleModalLabel">Employee Details</h1>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-
                         <form action="update.php" method="POST" id="editform">
-                          <div class="modal-body">
+                          <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Employee Details</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+
+
+                          <div class="modal-body" id="info_update">
 
                             <div class="mb-3">
                               <label class="form-label">Name</label>
-                              <input type="text" class="form-control" name="example-text-input" placeholder="Input placeholder">
+                              <input type="text" class="form-control" name="name" id="nameid" placeholder="Input placeholder">
                             </div>
 
                             <div class="mb-3">
                               <label class="form-label">Title<span class="form-label-description">56/100</span></label>
-                              <textarea class="form-control" name="example-textarea-input" rows="6" placeholder="Content..">Web Developer</textarea>
+                              <textarea class="form-control" name="title" id="titleid" rows="6" placeholder="Content..">Web Developer</textarea>
                             </div>
 
                             <div class="mb-3">
                               <label class="form-label">Address <span class="form-label-description">56/100</span></label>
-                              <textarea class="form-control" name="example-textarea-input" rows="6" placeholder="Content..">Oh! Come and see the violence inherent in the system! Help, help, I'm being repressed! We shall say 'Ni' again to you, if you do not appease us. I'm not a witch. I'm not a witch. Camelot!</textarea>
+                              <textarea class="form-control" name="address" id="addressid" rows="6" placeholder="Content..">Oh! Come and see the violence inherent in the system! Help, help, I'm being repressed! We shall say 'Ni' again to you, if you do not appease us. I'm not a witch. I'm not a witch. Camelot!</textarea>
                             </div>
 
                             <div class="mb-3">
                               <label class="form-label">Email address</label>
-                              <input type="email" class="form-control" placeholder="Email">
+                              <input type="email" class="form-control" name="email" id="emailid" placeholder="Email">
                             </div>
 
                             <div class="mb-3">
                               <label class="form-label">Basic Salary</label>
-                              <input type="tel" class="form-control" autocomplete="off">
+                              <input type="tel" class="form-control" name="salary" id="salaryid" autocomplete="off">
                             </div>
 
                             <div class="mb-3">
                               <label class="form-label">Phone number</label>
-                              <input type="tel" class="form-control" autocomplete="off">
+                              <input type="tel" class="form-control" name="number" id="numberid" autocomplete="off">
                             </div>
                           </div>
-                        </form>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                          <button type="submit" name="edituser" id="edituser" class="btn btn-primary">
-                            <a href="update.php" class="btn btn-primary ms-auto" data-bs-dismiss="modal">
 
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" name="edituser" id="edituser" class="btn btn-primary">
                               Save Changes
-                            </a>
-                          </button>
+                              </a>
+                            </button>
 
-                        </div>
+                          </div>
+                        </form>
                       </div>
                     </div>
                   </div>
 
+                  <!-- End of Edit Box -->
 
                   <!-- Delete Box -->
 
@@ -232,21 +233,25 @@
                       <div class="modal-status bg-danger"></div>
                       <div class="modal-content">
                         <div class="modal-header">
-                          <h1 class="modal-title fs-5" id="deleterow">Record Deleted</h1>
+                          <h1 class="modal-title fs-5" id="deleterow">Delete Record</h1>
                           <button type="button" name="delete" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
+                        <form action="delete.php" method="POST"></form>
                         <div class="modal-body">
-                          <div class="text-muted">Record deleted successfully.</div>
+                          <input type="hidden" id="deleteid" name="deleteid">
+                          <div class="text-muted">Do you want to delete this record?</div>
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                          <button type="submit" id="deletedata" name="deletedata" class="btn btn-danger deletebutton " data-bs-toggle="modal" data-bs-target="#">Delete</button>
                         </div>
                       </div>
                     </div>
                   </div>
+                  <!--End of Delete Box-->
 
 
-<!--End of Delete Box-->
+
 
 
 
