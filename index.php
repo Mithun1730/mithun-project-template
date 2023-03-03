@@ -87,6 +87,7 @@
                         <path d="M5 12l14 0"></path>
                       </svg>
                       Create new employee
+                      <input type="hidden" id="employee_id" name='employee_id'>
                       </a>
                     </button>
                   </div>
@@ -115,76 +116,78 @@
               </tr>
             </thead>
             <?php
-            if ($result) 
-            {
-              foreach ($result as $row) 
-              {
-                $id = $row['employee_id'];
+            while ($row = mysqli_fetch_array($result)) {
+              $id = $row['employee_id'];
             ?>
-                <tbody>
-                  <tr>
-                    <td data-label="Name">
-                      <div class="d-flex py-1 align-items-center">
+              <tbody>
+                <tr>
+                  <td data-label="Name">
+                    <div class="d-flex py-1 align-items-center">
 
-                        <div class="flex-fill">
-                          <div class="font-weight-medium" id="name"><?php echo $row['employee_name']; ?></div>
-                        </div>
+                      <div class="flex-fill">
+                        <div class="font-weight-medium" id="name"><?php echo $row['employee_name']; ?></div>
                       </div>
-                    </td>
-                    <td data-label="Title">
-                      <div id="title"><?php echo $row['title']; ?></div>
+                    </div>
+                  </td>
+                  <td data-label="Title">
+                    <div id="title"><?php echo $row['title']; ?></div>
 
-                    </td>
-                    <td class="text-muted" data-label="Role">
-                     <div id="address"><?php echo $row['employee_address']; ?></div> 
-                    </td>
-                    <td class="text-muted" data-label="Role">
-                      <div id="email"><?php echo $row['employee_email']; ?></div>
-                    </td>
-                    <td class="text-muted" data-label="Role">
-                      <div id="mobile"><?php echo $row['employee_mobile']; ?></div>
-                    </td>
-                    <td class="text-muted" data-label="Role">
-                      <div id="salary"><?php echo $row['basic_salary']; ?></div>
-                    </td>
-                    <td>
-                      <div class="btn-list flex-nowrap">
-                        <div class="col-6 col-sm-4 col-md-2 col-xl py-3">
-                          <button type="button" class="btn btn-warning edit_data"  name="edit" value=" <?php echo $row['employee_id'] ?>">
-                            Edit
-                          </button>
-                          <button type="button" class="btn btn-danger delete_data" data-bs-toggle="modal" data-bs-target="#deletemodal" name="delete" id="delete_id <?php echo $row['employee_id'] ?>">
-                            Delete
-                          </button>
-                        </div>
+                  </td>
+                  <td class="text-muted" data-label="Role">
+                    <div id="address"><?php echo $row['employee_address']; ?></div>
+                  </td>
+                  <td class="text-muted" data-label="Role">
+                    <div id="email"><?php echo $row['employee_email']; ?></div>
+                  </td>
+                  <td class="text-muted" data-label="Role">
+                    <div id="mobile"><?php echo $row['employee_mobile']; ?></div>
+                  </td>
+                  <td class="text-muted" data-label="Role">
+                    <div id="salary"><?php echo $row['basic_salary']; ?></div>
+                  </td>
+                  <td>
+                    <div class="btn-list flex-nowrap">
+                      <div class="col-6 col-sm-4 col-md-2 col-xl py-3">
+                        <button type="button" class="btn btn-warning edit_data" value="edit" id=" <?php echo $row['employee_id'] ?>">
+                          Edit
+                        </button>
+                        <button type="button" class="btn btn-danger delete_data" data-bs-toggle="modal" data-bs-target="#deletemodal" name="delete" id="delete_id <?php echo $row['employee_id'] ?>">
+                          Delete
+                        </button>
                       </div>
-                <?php
+                    </div>
+                  <?php
                 }
-              }
-              ?>
 
-<?php include "editmodal.php"?>
-<script>
-  $(document).ready(function(){
-    $(document).on('click','.edit_data',function(){
-      var name=$('#name').text();
-      var title=$('#title').text();
-      var address=$('#address').text();
-      var email=$('#email').text();
-      var salary=$('#salary').text();
-      var mobile=$('#mobile').text();
+                  ?>
 
-      $('#editmodal').modal('show');
+                  <?php include "editmodal.php" ?>
+                  <script>
+                    $(document).ready(function() {
+                      $(document).on('click', '.edit_data', function() {
 
-      $('#editname').val(name);
-      $('#edittitle').val(title);
-      $('#editaddress').val(address);
-      $('#editemail').val(email);
-      $('#editsalary').val(salary);
-      $('#editmobile').val(mobile);
-    });
-  });
-</script>
+                        var name = $('#name').text();
+                        var title = $('#title').text();
+                        var address = $('#address').text();
+                        var email = $('#email').text();
+                        var salary = $('#salary').text();
+                        var mobile = $('#mobile').text();
+
+                        $('#editmodal').modal('show');
+
+
+                        $('#editname').val(name);
+                        $('#edittitle').val(title);
+                        $('#editaddress').val(address);
+                        $('#editemail').val(email);
+                        $('#editsalary').val(salary);
+                        $('#editmobile').val(mobile);
+
+
+                      });
+
+                    });
+                  </script>
 
 
                   <!-- Delete Box -->
@@ -198,7 +201,7 @@
                           </button>
                         </div>
                         <div class="modal-body">
-                        <p>Do you want to delete this...?</p>
+                          <p>Do you want to delete this...?</p>
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -209,9 +212,9 @@
                   </div>
 
                   <!--End of Delete Box-->
-                    </td>
-                  </tr>
-                </tbody>
+                  </td>
+                </tr>
+              </tbody>
           </table>
         </div>
       </div>
