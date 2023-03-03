@@ -15,5 +15,7 @@
     <link rel="stylesheet" href="dist/js/bootstrap.min.js">
     <link rel="stylesheet" href="dist/js/jquery-3.6.3.min.js">
     <link rel="stylesheet" href="dist/js/jquery.min.js">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
    
   </head>

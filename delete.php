@@ -1,5 +1,8 @@
 <?php
 include 'connect.php';
+$delete_id=$_POST['del_id'];
+
+
 if(isset($_POST['deletedata'])){
     $id=$_POST['deleteid'];
 

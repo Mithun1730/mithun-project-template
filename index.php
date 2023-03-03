@@ -10,8 +10,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="button.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
 </head>
 
 <body>
@@ -116,8 +115,10 @@
               </tr>
             </thead>
             <?php
-            if ($result) {
-              foreach ($result as $row) {
+            if ($result) 
+            {
+              foreach ($result as $row) 
+              {
                 $id = $row['employee_id'];
             ?>
                 <tbody>
@@ -126,135 +127,88 @@
                       <div class="d-flex py-1 align-items-center">
 
                         <div class="flex-fill">
-                          <div class="font-weight-medium"><?php echo $row['employee_name']; ?></div>
+                          <div class="font-weight-medium" id="name"><?php echo $row['employee_name']; ?></div>
                         </div>
                       </div>
                     </td>
                     <td data-label="Title">
-                      <div><?php echo $row['title']; ?></div>
+                      <div id="title"><?php echo $row['title']; ?></div>
 
                     </td>
                     <td class="text-muted" data-label="Role">
-                      <?php echo $row['employee_address']; ?>
+                     <div id="address"><?php echo $row['employee_address']; ?></div> 
                     </td>
                     <td class="text-muted" data-label="Role">
-                      <?php echo $row['employee_email']; ?>
+                      <div id="email"><?php echo $row['employee_email']; ?></div>
                     </td>
                     <td class="text-muted" data-label="Role">
-                      <?php echo $row['employee_mobile']; ?>
+                      <div id="mobile"><?php echo $row['employee_mobile']; ?></div>
                     </td>
                     <td class="text-muted" data-label="Role">
-                      <?php echo $row['basic_salary']; ?>
+                      <div id="salary"><?php echo $row['basic_salary']; ?></div>
                     </td>
                     <td>
                       <div class="btn-list flex-nowrap">
                         <div class="col-6 col-sm-4 col-md-2 col-xl py-3">
-                          <button type="button" class="btn btn-warning edit_data" data-bs-toggle="modal" data-bs-target="#staticBackdrop" name="edit" id="<?php echo $row['employee_id'] ?>">
+                          <button type="button" class="btn btn-warning edit_data"  name="edit" value=" <?php echo $row['employee_id'] ?>">
                             Edit
                           </button>
-                          <button type="button" id="deletebutton" name="deletebutton" class="btn btn-danger deletebutton " data-bs-toggle="modal" data-bs-target="#deleterow" id="<?php echo $row['employee_id'] ?>">
-                            Delete</button>
+                          <button type="button" class="btn btn-danger delete_data" data-bs-toggle="modal" data-bs-target="#deletemodal" name="delete" id="delete_id <?php echo $row['employee_id'] ?>">
+                            Delete
                           </button>
                         </div>
                       </div>
-                  <?php
+                <?php
                 }
               }
-                  ?>
+              ?>
 
-                  <!-- Edit Box -->
+<?php include "editmodal.php"?>
+<script>
+  $(document).ready(function(){
+    $(document).on('click','.edit_data',function(){
+      var name=$('#name').text();
+      var title=$('#title').text();
+      var address=$('#address').text();
+      var email=$('#email').text();
+      var salary=$('#salary').text();
+      var mobile=$('#mobile').text();
 
+      $('#editmodal').modal('show');
 
-                  <div class="modal fade" id="staticBackdrop" tabindex="-1" aria-labelledby="staticBackdrop" aria-hidden="true">
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <form action="update.php" method="GET" id="editform">
-                       
-                          <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Employee Details</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                          </div>
+      $('#editname').val(name);
+      $('#edittitle').val(title);
+      $('#editaddress').val(address);
+      $('#editemail').val(email);
+      $('#editsalary').val(salary);
+      $('#editmobile').val(mobile);
+    });
+  });
+</script>
 
-
-                          <div class="modal-body" id="info_update">
-
-                            <div class="mb-3">
-                              <label class="form-label">Name</label>
-                              <input type="hidden" id="editid" name="editid">
-                              <input type="text" class="form-control" name="name" id="nameid" placeholder="Input placeholder">
-                            </div>
-
-                            <div class="mb-3">
-                              <label class="form-label">Title<span class="form-label-description">56/100</span></label>
-                              <textarea class="form-control" name="title" id="titleid" rows="6" placeholder="Content..">Web Developer</textarea>
-                            </div>
-
-                            <div class="mb-3">
-                              <label class="form-label">Address <span class="form-label-description">56/100</span></label>
-                              <textarea class="form-control" name="address" id="addressid" rows="6" placeholder="Content..">Oh! Come and see the violence inherent in the system! Help, help, I'm being repressed! We shall say 'Ni' again to you, if you do not appease us. I'm not a witch. I'm not a witch. Camelot!</textarea>
-                            </div>
-
-                            <div class="mb-3">
-                              <label class="form-label">Email address</label>
-                              <input type="email" class="form-control" name="email" id="emailid" placeholder="Email">
-                            </div>
-
-                            <div class="mb-3">
-                              <label class="form-label">Basic Salary</label>
-                              <input type="tel" class="form-control" name="salary" id="salaryid" autocomplete="off">
-                            </div>
-
-                            <div class="mb-3">
-                              <label class="form-label">Phone number</label>
-                              <input type="tel" class="form-control" name="number" id="numberid" autocomplete="off">
-                            </div>
-                          </div>
-
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" name="edituser" id="edituser" class="btn btn-primary">
-                              Save Changes
-                              </a>
-                            </button>
-
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- End of Edit Box -->
 
                   <!-- Delete Box -->
-
-                  <div class="modal fade" id="deleterow" tabindex="-1" aria-labelledby="deleterow" aria-hidden="true">
-                    <div class="modal-dialog">
-                      <div class="modal-status bg-danger"></div>
+                  <div class="modal fade" id="deletemodal" tabindex="-1" role="dialog" aria-labelledby="deletemodal" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
-                          <h1 class="modal-title fs-5" id="deleterow">Delete Record</h1>
-                          <button type="button" name="delete" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          <h5 class="modal-title" id="deletemodal">Delete Record</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
                         </div>
-                        <form action="delete.php" method="POST"></form>
                         <div class="modal-body">
-                          <input type="hidden" id="deleteid" name="deleteid">
-                          <div class="text-muted">Do you want to delete this record?</div>
+                        <p>Do you want to delete this...?</p>
                         </div>
                         <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                          <button type="submit" id="deletedata" name="deletedata" class="btn btn-danger deletebutton " data-bs-toggle="modal" data-bs-target="#">Delete</button>
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          <button type="button" class="btn btn-danger">Delete</button>
                         </div>
                       </div>
                     </div>
                   </div>
+
                   <!--End of Delete Box-->
-
-
-
-
-
-
-
                     </td>
                   </tr>
                 </tbody>
