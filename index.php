@@ -228,8 +228,6 @@
                       });
                     });
                   </script>
-
-
                   <!-- Delete Box -->
                   <div class="modal fade" id="deletemodal" tabindex="-1" role="dialog" aria-labelledby="deletemodal" aria-hidden="true">
                     <div class="modal-dialog" role="document">
