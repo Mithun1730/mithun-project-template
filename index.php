@@ -1,18 +1,5 @@
 <?php include('head.php') ?>
 <?php include('navbar.php') ?>
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="button.css">
-
-</head>
-
 <body>
   <div class="page-wrapper">
     <!-- Page header -->
@@ -148,44 +135,94 @@
                   <td>
                     <div class="btn-list flex-nowrap">
                       <div class="col-6 col-sm-4 col-md-2 col-xl py-3">
-                        <button type="button" class="btn btn-warning edit_data" value="edit" id=" <?php echo $row['employee_id'] ?>">
+                        <button type="button" class="btn btn-warning edit_data" value="edit" data-bs-toggle="modal" data-bs-target="#modal" id=" <?php echo $row['employee_id'] ?>">
                           Edit
                         </button>
-                        <button type="button" class="btn btn-danger delete_data" data-bs-toggle="modal" data-bs-target="#deletemodal" name="delete" id="delete_id <?php echo $row['employee_id'] ?>">
+                        <button type="button" class="btn btn-danger delete_data" value="delete" data-bs-toggle="modal" data-bs-target="#deletemodal" id=" <?php echo $row['employee_id'] ?>">
                           Delete
                         </button>
                       </div>
                     </div>
                   <?php
                 }
-
                   ?>
 
-                  <?php include "editmodal.php" ?>
+                 <!-- Edit Box -->
+
+
+<div class="modal fade" id="editmodal" tabindex="-1" aria-labelledby="editmodal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="update.php" id="editform" method="post">
+
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Details</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+
+                <div class="modal-body" id="edit_details">
+
+                    <div class="mb-3">
+                        <label class="form-label">Name</label>
+                        <input type="hidden" id="editid" name="editid">
+                        <input type="text" class="form-control" name="editname" id="editname" value="<?php echo $row['employee_name']?>">
+
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Title<span class="form-label-description">56/100</span></label>
+                        <textarea class="form-control" name="edittitle" id="edittitle" rows="6" value="<?php echo $row['title']?>></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Address <span class="form-label-description">56/100</span></label>
+                        <textarea class="form-control" name="editaddress" id="editaddress" rows="6" value="<?php echo $row['employee_address']?>></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Email address</label>
+                        <input type="email" class="form-control" name="editemail" id="editemail" placeholder="Email" value="<?php echo $row['employee_email']?>>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Basic Salary</label>
+                        <input type="tel" class="form-control" name="editsalary" id="editsalary" autocomplete="off" value="<?php echo $row['basic_salary']?>>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Phone number</label>
+                        <input type="tel" class="form-control" name="editmobile" id="editmobile" autocomplete="off" value="<?php echo $row['employee_mobile']?>>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" name="edituser" id="edituser" class="btn btn-primary">
+                        Save Changes
+                        </a>
+                    </button>
+
+                </div>
+            </form>
+                </div>
+    </div>
+</div>
+
+<!-- End of Edit Box -->
                   <script>
                     $(document).ready(function() {
                       $(document).on('click', '.edit_data', function() {
-
-                        var name = $('#name').text();
-                        var title = $('#title').text();
-                        var address = $('#address').text();
-                        var email = $('#email').text();
-                        var salary = $('#salary').text();
-                        var mobile = $('#mobile').text();
-
-                        $('#editmodal').modal('show');
-
-
-                        $('#editname').val(name);
-                        $('#edittitle').val(title);
-                        $('#editaddress').val(address);
-                        $('#editemail').val(email);
-                        $('#editsalary').val(salary);
-                        $('#editmobile').val(mobile);
-
-
+                            var edit_id=$(this).attr('id');
+                            $.ajax({
+                              url:'editmodal.php',
+                              method:'post',
+                              data:{edit_id:edit_id},
+                              success:function(data){
+                                $('#edit_details').html(data)
+                              }
+                            })
                       });
-
                     });
                   </script>
 
