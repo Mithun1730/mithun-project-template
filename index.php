@@ -27,11 +27,11 @@
               <div class="table-title">
                 <div class="row">
                   <div class="col-sm-6">
-                    <h2><b>Employess</b></h2>
+                    <h2><b>LIST OF EMPLOYEES</b></h2>
                   </div>
                   <div class="col-sm-6">
                     <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"> <span>Add
-                        Employess</span></a>
+                        Employee</span></a>
                     <a href="JavaScript:void(0);" class="btn btn-danger" id="delete_multiple"> <span>Delete</span></a>
                   </div>
                 </div>
@@ -50,6 +50,7 @@
                     <th>EMAIL</th>
                     <th>PHONE</th>
                     <th>CITY</th>
+                    
                     <th>ACTION</th>
                   </tr>
                 </thead>
@@ -82,11 +83,14 @@
                       <td>
                         <?php echo $row["city"]; ?>
                       </td>
+                      
                       <td>
                         <a href="#editEmployeeModal" class="edit" data-toggle="modal">
                           <i class="material-icons update" data-toggle="tooltip" data-id="<?php echo $row["id"]; ?>"
                             data-name="<?php echo $row["name"]; ?>" data-email="<?php echo $row["email"]; ?>"
                             data-phone="<?php echo $row["phone"]; ?>" data-city="<?php echo $row["city"]; ?>"
+                            
+                            
                             title="Edit"></i>
                         </a>
                         <a href="#deleteEmployeeModal" class="delete" data-id="<?php echo $row["id"]; ?>"
@@ -108,26 +112,27 @@
               <div class="modal-content">
                 <form id="user_form">
                   <div class="modal-header">
-                    <h4 class="modal-title">Add Student</h4>
+                    <h4 class="modal-title">Add Employee</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                   </div>
                   <div class="modal-body">
                     <div class="form-group">
-                      <label>NAME</label>
+                      <label>Name</label>
                       <input type="text" id="name" name="name" class="form-control" required>
                     </div>
                     <div class="form-group">
-                      <label>EMAIL</label>
+                      <label>Email</label>
                       <input type="email" id="email" name="email" class="form-control" required>
                     </div>
                     <div class="form-group">
-                      <label>PHONE</label>
+                      <label>Mobile No.</label>
                       <input type="phone" id="phone" name="phone" class="form-control" required>
                     </div>
                     <div class="form-group">
-                      <label>CITY</label>
+                      <label>City</label>
                       <input type="city" id="city" name="city" class="form-control" required>
                     </div>
+                    
                   </div>
                   <div class="modal-footer">
                     <input type="hidden" value="1" name="type">
@@ -144,7 +149,7 @@
               <div class="modal-content">
                 <form id="update_form">
                   <div class="modal-header">
-                    <h4 class="modal-title">Edit Student</h4>
+                    <h4 class="modal-title">Edit Employee</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                   </div>
                   <div class="modal-body">
@@ -165,6 +170,10 @@
                       <label>City</label>
                       <input type="city" id="city_u" name="city" class="form-control" required>
                     </div>
+
+                    
+
+                    
                   </div>
                   <div class="modal-footer">
                     <input type="hidden" value="2" name="type">
@@ -187,7 +196,7 @@
                   <div class="modal-body">
                     <input type="hidden" id="id_d" name="id" class="form-control">
                     <p>Are you sure you want to delete these Records?</p>
-                    <p class="text-warning"><small>write smr thing </small></p>
+                  <!--  <p class="text-warning"><small>write smr thing </small></p> -->
                   </div>
                   <div class="modal-footer">
                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">

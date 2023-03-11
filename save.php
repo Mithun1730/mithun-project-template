@@ -6,6 +6,8 @@ if(count($_POST)>0){
 		$email=$_POST['email'];
 		$phone=$_POST['phone'];
 		$city=$_POST['city'];
+		
+		
 		$sql = "INSERT INTO `student`( `name`, `email`,`phone`,`city`) 
 		VALUES ('$name','$email','$phone','$city')";
 		if (mysqli_query($conn, $sql)) {
@@ -24,6 +26,8 @@ if(count($_POST)>0){
 		$email=$_POST['email'];
 		$phone=$_POST['phone'];
 		$city=$_POST['city'];
+		
+		
 		$sql = "UPDATE `student` SET `name`='$name',`email`='$email',`phone`='$phone',`city`='$city' WHERE id=$id";
 		if (mysqli_query($conn, $sql)) {
 			echo json_encode(array("statusCode"=>200));
