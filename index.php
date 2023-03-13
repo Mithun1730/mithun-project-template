@@ -47,9 +47,11 @@
                     </th>
                     <th>SL NO</th>
                     <th>NAME</th>
+                    
                     <th>EMAIL</th>
                     <th>PHONE</th>
                     <th>CITY</th>
+                    <th>BASIC SALARY</th>
                     
                     <th>ACTION</th>
                   </tr>
@@ -57,7 +59,7 @@
                 <tbody>
 
                   <?php
-                  $result = mysqli_query($conn, "SELECT * FROM student");
+                  $result = mysqli_query($conn, "SELECT * FROM employee_details");
                   $i = 1;
                   while ($row = mysqli_fetch_array($result)) {
                     ?>
@@ -83,12 +85,16 @@
                       <td>
                         <?php echo $row["city"]; ?>
                       </td>
+                      <td>
+                        <?php echo $row["basic_salary"]; ?>
+                      </td>
                       
                       <td>
                         <a href="#editEmployeeModal" class="edit" data-toggle="modal">
                           <i class="material-icons update" data-toggle="tooltip" data-id="<?php echo $row["id"]; ?>"
                             data-name="<?php echo $row["name"]; ?>" data-email="<?php echo $row["email"]; ?>"
                             data-phone="<?php echo $row["phone"]; ?>" data-city="<?php echo $row["city"]; ?>"
+                            data-salary="<?php echo $row["basic_salary"]; ?>"
                             
                             
                             title="Edit"></i>
@@ -131,13 +137,18 @@
                     <div class="form-group">
                       <label>City</label>
                       <input type="city" id="city" name="city" class="form-control" required>
+                      </div>
+                      <div>
+                    <label>Basic Salary</label>
+                      <input type="salary" id="salary" name="salary" class="form-control" required>
                     </div>
+                    
                     
                   </div>
                   <div class="modal-footer">
                     <input type="hidden" value="1" name="type">
                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                    <button type="button" class="btn btn-success" id="btn-add">Add</button>
+                    <button type="button" class="btn btn-success" id="btn-add" name='add'>Add</button>
                   </div>
                 </form>
               </div>
@@ -158,18 +169,24 @@
                       <label>Name</label>
                       <input type="text" id="name_u" name="name" class="form-control" required>
                     </div>
+                    
                     <div class="form-group">
                       <label>Email</label>
                       <input type="email" id="email_u" name="email" class="form-control" required>
                     </div>
                     <div class="form-group">
-                      <label>PHONE</label>
+                      <label>Phone</label>
                       <input type="phone" id="phone_u" name="phone" class="form-control" required>
                     </div>
                     <div class="form-group">
                       <label>City</label>
                       <input type="city" id="city_u" name="city" class="form-control" required>
                     </div>
+                    <div class="form-group">
+                      <label>Basic Salary</label>
+                      <input type="salary" id="salary_u" name="salary" class="form-control" required>
+                    </div>
+
 
                     
 

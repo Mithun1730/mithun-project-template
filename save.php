@@ -6,10 +6,13 @@ if(count($_POST)>0){
 		$email=$_POST['email'];
 		$phone=$_POST['phone'];
 		$city=$_POST['city'];
+		$salary=$_POST['salary'];
+		$password="ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+		$pass=substr(str_shuffle($password),0,8);		
 		
+		$sql = "INSERT INTO `employee_details`( `name`,`password`,`email`,`phone`,`city`,`basic_salary`) 
+		VALUES ('$name','$pass','$email','$phone','$city','$salary')";
 		
-		$sql = "INSERT INTO `student`( `name`, `email`,`phone`,`city`) 
-		VALUES ('$name','$email','$phone','$city')";
 		if (mysqli_query($conn, $sql)) {
 			echo json_encode(array("statusCode"=>200));
 		} 
@@ -26,9 +29,10 @@ if(count($_POST)>0){
 		$email=$_POST['email'];
 		$phone=$_POST['phone'];
 		$city=$_POST['city'];
+		$salary=$_POST['salary'];
 		
 		
-		$sql = "UPDATE `student` SET `name`='$name',`email`='$email',`phone`='$phone',`city`='$city' WHERE id=$id";
+		$sql = "UPDATE `employee_details` SET `name`='$name',`email`='$email',`phone`='$phone',`city`='$city',`basic_salary`='$salary' WHERE id=$id";
 		if (mysqli_query($conn, $sql)) {
 			echo json_encode(array("statusCode"=>200));
 		} 
@@ -41,7 +45,7 @@ if(count($_POST)>0){
 if(count($_POST)>0){
 	if($_POST['type']==3){
 		$id=$_POST['id'];
-		$sql = "DELETE FROM `student` WHERE id=$id ";
+		$sql = "DELETE FROM `employee_details` WHERE id=$id ";
 		if (mysqli_query($conn, $sql)) {
 			echo $id;
 		} 
@@ -54,7 +58,7 @@ if(count($_POST)>0){
 if(count($_POST)>0){
 	if($_POST['type']==4){
 		$id=$_POST['id'];
-		$sql = "DELETE FROM 'student' WHERE id in ($id)";
+		$sql = "DELETE FROM 'employee_details' WHERE id in ($id)";
 		if (mysqli_query($conn, $sql)) {
 			echo $id;
 		} 
