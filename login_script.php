@@ -13,11 +13,10 @@ print_r($row);
 // exit;
   if($row===1){
     $_SESSION['name']=$row2['name'];
-    $_SESSION['password']=$row2['password'];
     $_SESSION['id']=$row2['id'];
-    $_SESSION["name"] = "green";
     header('location:index.php');
 }else{
+    $_SESSION['error1']='Invalid Username or Password';
     header('location:signin.php');
 }
 }
