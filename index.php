@@ -1,7 +1,11 @@
 <?php include('head.php') ?>
 <?php include('navbar.php') ?>
 <?php include('connect.php'); ?>
-
+<?php 
+if(!isset($_SESSION['name'])){
+  header('location:signin.php');
+}
+?>
 <body>
   <div class="page-wrapper">
     <!-- Page header -->
@@ -12,7 +16,6 @@
             <h2 class="page-title">
               Home
           </div> -->
-
           <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
           <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -109,7 +112,6 @@
                   ?>
                 </tbody>
               </table>
-
             </div>
           </div>
           <!-- Add Modal HTML -->

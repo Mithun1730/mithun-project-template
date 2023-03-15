@@ -1,34 +1,11 @@
 <?php
 session_start();
 include "connect.php";
-if(isset($_POST)){
-    $name=$_POST['name'];
-    $email=$_POST['email'];
-    $sql="SELECT * FROM student WHERE 'name'='$name''email'='$email'";
-    $result=mysqli_query($conn,$sql);
-    $row_cnt = $result->num_rows;
-    var_dump($row_cnt);
-    If($row_cnt === 1){
-        // header("Location:http://localhost/mithun-project-template/index.php/");
-        header("Location:http://localhost/mithun/mithun-project-template/index.php");
-    }else{
-        // header("Location:http://localhost/mithun-project-template/signin.php/");
-        header("Location:http://localhost/mithun/mithun-project-template/signin.php");
-        // header("Refresh:0");
-    }
-    
-}
-        // while($row = mysqli_fetch_row($result)){
-        //     // var_dump($row[1]);
-        //     // echo $row['name'];
-        //     // echo $row['email'];
-        // }
-        // your url 
-?>
-
 include "head.php";
+if(!isset($_SESSION['name'])){
+  header('location:signin.php');
+}
 ?>
-
 <div class="page page-center">
     <div class="container container-tight py-4">
         <div class="text-center mb-4">
@@ -43,7 +20,6 @@ include "head.php";
                             <h3 class="m-0 mb-1"><a href="#">Welcome,<?php echo $_SESSION['name']?></a></h3>
                             <div class="text-muted">Software Test Engineer II</div>
                             <div class="mt-3">
-
                                 <button onclick="disable(this)" type="submit" name="checkin" class="btn btn-outline-info check-in">Check-In</button>
                                 <button onclick="disable(this)" type="submit" name="checkout" class="btn btn-outline-info check-out">Check-Out</button>
                             </div>
