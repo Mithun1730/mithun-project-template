@@ -13,9 +13,14 @@ include "connect.php";
     <div class="card card-md mx-auto" style="width: 50rem;">
       <div class="card-body">
         <h2 class="h2 text-center mb-4">Attendance Register</h2>
-        <div class="alert alert-danger" role="alert">
-          This Invalid
+        <?php 
+        if(isset($_SESSION['error1'])){?>
+          <div class="alert alert-danger" role="alert">
+          <?=$_SESSION['error1']?>
         </div>
+       <?php }
+        ?>
+        
         <form action="Login_script.php" method="POST">
           <div class="mb-3">
             <label class="form-label"><b>Name</b></label>
