@@ -1,11 +1,11 @@
-<?php include('head.php') ?>
-<?php include('navbar.php') ?>
-<?php include('connect.php'); ?>
 <?php 
 if(!isset($_SESSION['name'])){
   header('location:signin.php');
 }
 ?>
+<?php include('head.php') ?>
+<?php include('navbar.php') ?>
+<?php include('connect.php'); ?>
 <body>
   <div class="page-wrapper">
     <!-- Page header -->
@@ -112,6 +112,7 @@ if(!isset($_SESSION['name'])){
                   ?>
                 </tbody>
               </table>
+
             </div>
           </div>
           <!-- Add Modal HTML -->

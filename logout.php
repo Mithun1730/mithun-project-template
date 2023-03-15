@@ -1,3 +1,6 @@
 <?php
-    session_destroy();
+    // session_destroy();
+    unset($_SESSION['name']);
+    unset($_SESSION['id']);
+    header('location:signin.php');
 ?>

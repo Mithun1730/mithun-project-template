@@ -1,10 +1,10 @@
 <?php
+if(!isset($_SESSION['name'])){
+    header('location:signin.php');
+  }
 session_start();
 include "connect.php";
 include "head.php";
-if(!isset($_SESSION['name'])){
-  header('location:signin.php');
-}
 ?>
 <div class="page page-center">
     <div class="container container-tight py-4">

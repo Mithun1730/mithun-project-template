@@ -1,11 +1,12 @@
-<?php include("head.php") ?>
-<?php include("navbar.php") ?>
-<?php include('connect.php'); ?>
 <?php
 if(!isset($_SESSION['name'])){
   header('location:signin.php');
 }
 ?>
+<?php include("head.php") ?>
+<?php include("navbar.php") ?>
+<?php include('connect.php'); ?>
+
 <div class="page-body">
   <div class="container-xl">
     <div class="card ">
