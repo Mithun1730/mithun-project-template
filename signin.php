@@ -20,14 +20,15 @@ include "connect.php";
                 <label class="form-label"><b>Password</b></label>
                 <input type="password" name="pass" id="pass" class="form-control" placeholder="" autocomplete="off" required="">
               </div>
-              
               <div class="form-footer">
-                
+
+              <button type="submit" name="signin" id="signin" class="btn btn-primary sign-in">SignIn</button>
+
               <button type="submit" name="login" id="login" class="btn btn-primary sign-in">Log In</button>
+
               </div>
             </form>
           </div>
- 
       </div>
     </div>
 </div>
