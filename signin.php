@@ -18,14 +18,11 @@ include "head.php";
                 <label class="form-label"><b>Email</b></label>
                 <input type="email" name="email" id="email" class="form-control" placeholder="example@gmail.com" autocomplete="off" required="">
               </div>
-              
               <div class="form-footer">
-                
               <button type="submit" name="signin" id="signin" class="btn btn-primary sign-in">SignIn</button>
               </div>
             </form>
           </div>
- 
       </div>
     </div>
 </div>
