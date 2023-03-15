@@ -1,5 +1,5 @@
 <?php
-session_start();
+// session_start();
 include "head.php";
 include "connect.php";
 ?>
@@ -20,7 +20,6 @@ include "connect.php";
         </div>
        <?php }
         ?>
-        
         <form action="Login_script.php" method="POST">
           <div class="mb-3">
             <label class="form-label"><b>Name</b></label>
