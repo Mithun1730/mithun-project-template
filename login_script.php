@@ -1,5 +1,7 @@
 <?php 
+session_start();
 include "connect.php";
+
 if(isset($_POST)){
   $name=$_POST['username'];
   $pass=$_POST['password'];
@@ -8,12 +10,14 @@ if(isset($_POST)){
   $row=mysqli_num_rows($result);
   $row2 = mysqli_fetch_array($result);
   if($row==1){
-    $_SESSION['name']=$row2['name'];
-    $_SESSION['id']=$row2['id'];
-    header('location:index.php');
-}else{
+    $_SESSION['username']=$row2['name'];
+    $_SESSION['id'] = $row2['id'];
+    $_SESSION['email']=$row2['email'];
+       header('location:home2.php');  // Login Success   
+  }    else{
     $_SESSION['error1']='Invalid Username or Password';
     header('location:signin.php');
-}
-}
-?>
+   }           
+}                           
+
+ ?>

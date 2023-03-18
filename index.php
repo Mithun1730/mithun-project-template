@@ -1,7 +1,7 @@
 <?php 
-if(!isset($_SESSION['name'])){
-  header('location:signin.php');
-}
+// if(!isset($_SESSION['name'])){
+//   header('location:signin.php');
+// }
 ?>
 <?php include('head.php') ?>
 <?php include('navbar.php') ?>
@@ -188,11 +188,7 @@ if(!isset($_SESSION['name'])){
                     <div class="form-group">
                       <label>Basic Salary</label>
                       <input type="salary" id="salary_u" name="salary" class="form-control" required>
-                    </div>
-
-
-                    
-
+                    </div>            
                     
                   </div>
                   <div class="modal-footer">

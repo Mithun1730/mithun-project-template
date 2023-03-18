@@ -1,23 +1,35 @@
 <?php
-// session_start();
+ session_start();
+
 include "head.php";
 include "connect.php";
 ?>
 <div class="page page-center">
   <div class="container container-tight py-4">
-    <div class="text-center mb-4">
-      <a href="#" class="navbar-brand navbar-brand-autodark"><img src="C:/Users/ASUS/OneDrive/Desktop/Logo.png"
-          height="40" alt=""></a>
+    <div class="text-center mx-auto">
+      <!--<a href="#" class="navbar-brand navbar-brand-autodark"><img src="C:/Users/ASUS/OneDrive/Desktop/Logo.png"
+          height="40" alt=""></a>-->
     </div>
 
-    <div class="card card-md mx-auto" style="width: 50rem;">
+    <div class="card card-md mx-auto" ">
       <div class="card-body">
         <h2 class="h2 text-center mb-4">Attendance Register</h2>
         <?php 
         if(isset($_SESSION['error1'])){?>
-          <div class="alert alert-danger" role="alert">
-          <?=$_SESSION['error1']?>
-        </div>
+        <div class="alert alert-danger alert-dismissible" role="alert">
+  <div class="d-flex">
+    <div>
+      <!-- Download SVG icon from http://tabler-icons.io/i/alert-circle -->
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon alert-icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" /><path d="M12 8l0 4" /><path d="M12 16l.01 0" /></svg>
+    </div>
+    <div>
+      <h4 class="alert-title"><strong><?=$_SESSION['error1']?></strong>&hellip;</h4>
+      <div class="text-muted">   </div>
+    </div>
+  </div>
+  <a class="btn-close" data-bs-dismiss="alert" aria-label="close"></a>
+</div>
+
        <?php }
         ?>
         <form action="Login_script.php" method="POST">
@@ -32,7 +44,7 @@ include "connect.php";
               required="">
           </div>
           <div class="form-footer">
-            <input type="submit" value="login">
+             <button type="submit" name="login"  class="btn btn-primary sign-in">Log In</button>
             <!-- <button type="submit" name="signin" id="signin" class="btn btn-primary sign-in">SignIn</button> -->
             <!-- <button type="submit" name="login"  class="btn btn-primary sign-in">Log In</button> -->
           </div>

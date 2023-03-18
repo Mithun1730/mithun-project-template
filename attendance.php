@@ -1,11 +1,7 @@
-<?php
-if(!isset($_SESSION['name'])){
-  header('location:signin.php');
-}
-?>
+<?php include('connect.php'); ?>
+<?php session_start(); ?>
 <?php include("head.php") ?>
 <?php include("navbar.php") ?>
-<?php include('connect.php'); ?>
 
 <div class="page-body">
   <div class="container-xl">
@@ -15,31 +11,43 @@ if(!isset($_SESSION['name'])){
           <table class="table">
             <thead>
               <tr>
-                <th><button class="table-sort " style="width: 15rem;" data-sort="sort-name">Name</button></th>
-                <th><button class="table-sort " style="width: 10rem;" data-sort="sort-city">City</button></th>
+                <th><button class="table-sort " style="width: 15rem;" data-sort="sort-name">Name</button></th>          
                 <th><button class="table-sort " style="width: 15rem;" data-sort="sort-type">Email</button></th>
                 <th><button class="table-sort " style="width: 10rem;" data-sort="sort-score">Status</button></th>
+                <th><button class="table-sort " style="width: 10rem;" data-sort="sort-city">Check In AM</button></th>
+                <th><button class="table-sort " style="width: 10rem;" data-sort="sort-city">Check Out AM/PM</button></th>
+                <th><button class="table-sort " style="width: 10rem;" data-sort="sort-city">Chech In PM</button></th>
+                <th><button class="table-sort " style="width: 10rem;" data-sort="sort-city">Check Out PM</button></th>
                 <th><button class="table-sort " style="width: 10rem;" data-sort="sort-date">Date</button></th>
-
                 <th><button class="table-sort" data-sort="sort-progress">Progress</button></th>
               </tr>
             </thead>
-            <?php include "connect.php";
-              $sql="SELECT * FROM employee_details";
+            <tbody class="table-tbody">
+              <tr>
+              
+              <?php include "connect.php";
+              $sql="SELECT * FROM attendance";
               $result=mysqli_query($conn,$sql);
               while($row=mysqli_fetch_array($result))
               {
-              ?>
-            <tbody class="table-tbody">
-              <tr>
-                <td> <?php echo $row['name']?> </td>
-                <td> <?php echo $row['city'] ?> </td>
-                <td> <?php echo $row['email'] ?>  </td>
 
+              ?>
+              
+                 <td> <?php echo $row['emp_name'] ?> </td>
+             
+                 <td><?php echo $row['emp_email'] ?></td>
+                <td><?php if(isset($_SESSION['id'])){echo "Logged In"; } else{ echo "Log off"; } ?></td>
                 
-                
-                <td>Logged In</td>
+
+                 
+                 <td><?php echo $row['checkin_am']?></td>
+                 <td><?php echo $row['checkout_am_pm']?></td>
+                 <td><?php echo $row['checkin_pm']?></td>
+                 <td><?php echo $row['checkout_pm']?></td>
+            
+             
                 <td>August 05, 2021</td>
+                
 
                 <td class="sort-progress" data-progress="30">
                   <div class="row align-items-center">
@@ -55,7 +63,8 @@ if(!isset($_SESSION['name'])){
                 </td>
               </tr>
             </tbody>
-            <?php } ?>
+            <?php }?>
+          
           </table>
         </div>
       </div>
