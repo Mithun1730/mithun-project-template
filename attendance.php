@@ -36,7 +36,7 @@
                  <td> <?php echo $row['emp_name'] ?> </td>
              
                  <td><?php echo $row['emp_email'] ?></td>
-                <td><?php if(isset($_SESSION['id'])){echo "Logged In"; } else{ echo "Log off"; } ?></td>
+                <td><span class="badge badge-outline text-teal">Logged In</span></td>
                 
 
                  
@@ -46,7 +46,7 @@
                  <td><?php echo $row['checkout_pm']?></td>
             
              
-                <td>August 05, 2021</td>
+                <td><?php echo date('d-m-Y')?></td>
                 
 
                 <td class="sort-progress" data-progress="30">
@@ -71,5 +71,6 @@
     </div>
   </div>
 </div>
+
 
 <?php include('footer.php') ?>

@@ -7,7 +7,7 @@ include "connect.php";
     $id=$_SESSION['id'];
     $name=$_SESSION['username'];
     $email=$_SESSION['email'];
-    $check_in_am = date("Y-m-d H-i-s");
+    $check_in_am = date("Y-m-d h-i-s");
 
     $sql = "INSERT INTO attendance (`attendance_emp_id`,`emp_name`,`emp_email`,`checkin_am`) VALUES ('$id','$name','$email','$check_in_am')" ;
 

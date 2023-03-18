@@ -16,7 +16,7 @@ include "connect.php";
         <h2 class="h2 text-center mb-4">Attendance Register</h2>
         <?php 
         if(isset($_SESSION['error1'])){?>
-        <div class="alert alert-danger alert-dismissible" role="alert">
+        <div class="alert alert-danger alert-dismissible" role="alert" >
   <div class="d-flex">
     <div>
       <!-- Download SVG icon from http://tabler-icons.io/i/alert-circle -->
