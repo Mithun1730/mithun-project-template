@@ -4,6 +4,15 @@
 include "head.php";
 include "connect.php";
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body onload="getLocation();">
 <div class="page page-center">
   <div class="container container-tight py-4">
     <div class="text-center mx-auto">
@@ -32,11 +41,13 @@ include "connect.php";
 
        <?php }
         ?>
-        <form action="Login_script.php" method="POST">
+        <form  class="loginform" action="Login_script.php" method="POST">
           <div class="mb-3">
             <label class="form-label"><b>Name</b></label>
             <input type="text" name="username" id="name" class="form-control" placeholder="" autocomplete="off"
               required="">
+              <input type="hidden" name="latitude" value="">
+              <input type="hidden" name="longitude" value="">
           </div>
           <div class="mb-3">
             <label class="form-label"><b>Password</b></label>
@@ -74,3 +85,24 @@ include "connect.php";
   }
   ?>
  -->
+ <script type="text/javascript">
+  function getLocation(){
+    if(navigator.geolocation){
+      navigator.geolocation.getCurrentPosition(showPosition,showError);
+    }
+  }
+  function showPosition(position){
+    document.querySelector('.loginform input[name="latitude"]').value = position.coords.latitude;
+    document.querySelector('.loginform input[name="longitude"]').value = position.coords.longitude;
+  }
+  function showError(error){
+    switch(error.code){
+      case error.PERMISSION_DENIED:
+        alert("Allow Location Access For Login");
+        location.reload();
+        break;
+    }
+  }
+ </script>
+</body>
+</html>

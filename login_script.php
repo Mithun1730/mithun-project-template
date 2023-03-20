@@ -2,7 +2,8 @@
 session_start();
 include "connect.php";
 
-if(isset($_POST)){
+if(isset($_POST['login'])){
+  if(isset($_POST['latitude']) && isset($_POST['longitude'])){
   $name=$_POST['username'];
   $pass=$_POST['password'];
   $sql="SELECT * FROM `employee_details` WHERE name='$name' AND `password`='$pass'";
@@ -18,6 +19,9 @@ if(isset($_POST)){
     $_SESSION['error1']='Invalid Username or Password';
     header('location:signin.php');
    }           
-}                           
+}    
 
+  } else{
+    header('location:signin.php');
+  }                      
  ?>
