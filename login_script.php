@@ -12,6 +12,7 @@ if(isset($_POST['login'])){
   $row2 = mysqli_fetch_array($result);
   if($row==1){
     $_SESSION['username']=$row2['name'];
+    $_SESSION['title']=$row2['title'];
     $_SESSION['id'] = $row2['id'];
     $_SESSION['email']=$row2['email'];
        header('location:home2.php');  // Login Success   

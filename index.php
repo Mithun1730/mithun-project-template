@@ -50,7 +50,7 @@
                     </th>
                     <th>SL NO</th>
                     <th>NAME</th>
-                    
+                    <th>TITLE</th>
                     <th>EMAIL</th>
                     <th>PHONE</th>
                     <th>CITY</th>
@@ -80,6 +80,9 @@
                         <?php echo $row["name"]; ?>
                       </td>
                       <td>
+                        <?php echo $row["title"]; ?>
+                      </td>
+                      <td>
                         <?php echo $row["email"]; ?>
                       </td>
                       <td>
@@ -95,11 +98,10 @@
                       <td>
                         <a href="#editEmployeeModal" class="edit" data-toggle="modal">
                           <i class="material-icons update" data-toggle="tooltip" data-id="<?php echo $row["id"]; ?>"
-                            data-name="<?php echo $row["name"]; ?>" data-email="<?php echo $row["email"]; ?>"
-                            data-phone="<?php echo $row["phone"]; ?>" data-city="<?php echo $row["city"]; ?>"
-                            data-salary="<?php echo $row["basic_salary"]; ?>"
-                            
-                            
+                            data-name="<?php echo $row["name"]; ?>" data-title="<?php echo $row["title"]; ?>"
+                            data-email="<?php echo $row["email"]; ?>" data-phone="<?php echo $row["phone"]; ?>"
+                            data-city="<?php echo $row["city"]; ?>" data-salary="<?php echo $row["basic_salary"]; ?>"
+                                                        
                             title="Edit"></i>
                         </a>
                         <a href="#deleteEmployeeModal" class="delete" data-id="<?php echo $row["id"]; ?>"
@@ -128,6 +130,10 @@
                     <div class="form-group">
                       <label>Name</label>
                       <input type="text" id="name" name="name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                      <label>Title</label>
+                      <input type="text" id="title" name="title" class="form-control" required>
                     </div>
                     <div class="form-group">
                       <label>Email</label>
@@ -171,6 +177,10 @@
                     <div class="form-group">
                       <label>Name</label>
                       <input type="text" id="name_u" name="name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                      <label>Title</label>
+                      <input type="text" id="title_u" name="title" class="form-control" required>
                     </div>
                     
                     <div class="form-group">

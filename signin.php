@@ -7,14 +7,15 @@ include "connect.php";
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Log In</title>
 </head>
-<body onload="getLocation();">
+<body onload="getLocation();" class="bg-primary">
 <div class="page page-center">
-  <div class="container container-tight py-4">
+  <div class="container container-tight  ">
     <div class="text-center mx-auto">
       <!--<a href="#" class="navbar-brand navbar-brand-autodark"><img src="C:/Users/ASUS/OneDrive/Desktop/Logo.png"
           height="40" alt=""></a>-->
@@ -22,7 +23,7 @@ include "connect.php";
 
     <div class="card card-md mx-auto" ">
       <div class="card-body">
-        <h2 class="h2 text-center mb-4">Attendance Register</h2>
+        <h2 class="h2 text-center text-primary mb-4">Attendance Register</h2>
         <?php 
         if(isset($_SESSION['error1'])){?>
         <div class="alert alert-danger alert-dismissible" role="alert" >

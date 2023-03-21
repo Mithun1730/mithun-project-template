@@ -3,6 +3,7 @@ include 'connect.php';
 if(count($_POST)>0){
 	if($_POST['type']==1){
 		$name=$_POST['name'];
+		$title=$_POST['title'];
 		$email=$_POST['email'];
 		$phone=$_POST['phone'];
 		$city=$_POST['city'];
@@ -10,8 +11,8 @@ if(count($_POST)>0){
 		$password="ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
 		$pass=substr(str_shuffle($password),0,8);		
 		
-		$sql = "INSERT INTO `employee_details`( `name`,`password`,`email`,`phone`,`city`,`basic_salary`) 
-		VALUES ('$name','$pass','$email','$phone','$city','$salary')";
+		$sql = "INSERT INTO `employee_details`( `name`,`title`,`password`,`email`,`phone`,`city`,`basic_salary`) 
+		VALUES ('$name','$title','$pass','$email','$phone','$city','$salary')";
 		
 		if (mysqli_query($conn, $sql)) {
 			echo json_encode(array("statusCode"=>200));
@@ -26,13 +27,14 @@ if(count($_POST)>0){
 	if($_POST['type']==2){
 		$id=$_POST['id'];
 		$name=$_POST['name'];
+		$title=$_POST['title'];
 		$email=$_POST['email'];
 		$phone=$_POST['phone'];
 		$city=$_POST['city'];
 		$salary=$_POST['salary'];
 		
 		
-		$sql = "UPDATE `employee_details` SET `name`='$name',`email`='$email',`phone`='$phone',`city`='$city',`basic_salary`='$salary' WHERE id=$id";
+		$sql = "UPDATE `employee_details` SET `name`='$name',`title`='$title',`email`='$email',`phone`='$phone',`city`='$city',`basic_salary`='$salary' WHERE id=$id";
 		if (mysqli_query($conn, $sql)) {
 			echo json_encode(array("statusCode"=>200));
 		} 
