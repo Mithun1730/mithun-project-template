@@ -9,6 +9,7 @@
           </button>
           <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
             Exciteon
+            
           </h1>
           <div class="navbar-nav flex-row order-md-last">
             <div class="nav-item d-none d-md-flex me-3">
@@ -28,7 +29,7 @@
               </a>
             <div class="nav-item dropdown">
               <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open user menu">
-                <span class="avatar avatar-sm" style="background-image: url(http://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg)"></span>
+                <span class="avatar avatar-sm" style="background-image: url(img/Logo.png)"></span>
                 <div class="d-none d-xl-block ps-2">
                   <div>Mithun</div>
                   <div class="mt-1 small text-muted">Web developer</div>
