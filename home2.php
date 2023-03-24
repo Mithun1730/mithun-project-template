@@ -19,16 +19,21 @@ include "head.php";
         body {
             background: url(img/eLogo.jpeg);
         }
+        h3{
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    
+}
     </style>
     <script>
         function hidediv() {
             document.getElementById('message').style.visibility = "hidden";
         }
-        setTimeout("hidediv()", 3000)
+        setTimeout("hidediv()", 2000)
     </script>
 </head>
 
 <body>
+
     <div class="page page-center ">
         <div class="container container-tight py-4" >
             <div class="text-center mb-4 ">
@@ -54,7 +59,7 @@ include "head.php";
                         </a>
                         <div class="card-body p-4 text-center ">
                             <h3 class="m-0 mb-1"><span id="username">
-                                    <h3 class="m-0 mb-2 mx-auto display-6 text-primary">EXCITEON</h3>
+                                    <h3 class="m-0 mb-2 mx-auto display-6 text-red">EXCITEON</h3>
 
                                     <br> <a href="#">Welcome,<?php echo $_SESSION['username'] ?></a>
                                 </span></h3>
@@ -80,14 +85,49 @@ include "head.php";
                                         </h5>
                                     </div>
                                 </div>
-                            <?php } ?>
+                            <?php }
+                            if(isset($_SESSION['status1'])){?>
+                                <div class="mx-auto mt-3">
+                                    <div>
+                                        <h5 class="alert-title text-red">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check" width="100" height="100" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ff2825" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                <path d="M5 12l5 5l10 -10" />
+                                            </svg>
+                                            <?php echo $_SESSION['status1']; ?>
+                                        </h5>
+                                    </div>
+                                </div>
+                               <?php } ?>
+                               <?php 
+                            if(isset($_SESSION['status2'])){?>
+                                <div class="mx-auto mt-3">
+                                    <div>
+                                        <h5 class="alert-title text-red">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check" width="100" height="100" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ff2825" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                <path d="M5 12l5 5l10 -10" />
+                                            </svg>
+                                            <?php echo $_SESSION['status2']; ?>
+                                        </h5>
+                                    </div>
+                                </div>
+                               <?php } ?>
+                               <?php
+                            if(isset($_SESSION['status3'])){?>
+                                <div class="mx-auto mt-3">
+                                    <div>
+                                        <h5 class="alert-title text-red">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check" width="100" height="100" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ff2825" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                <path d="M5 12l5 5l10 -10" />
+                                            </svg>
+                                            <?php echo $_SESSION['status3']; ?>
+                                        </h5>
+                                    </div>
+                                </div>
+                               <?php } ?>
                         </div>
-
-
-
-
-
-
 
                         <div class="mt-3">
                             <form action="checkin_am.php" method="post" id="checkin1">
@@ -95,7 +135,6 @@ include "head.php";
                                 <button type="submit" name="checkin-am" id="checkin-am" class="btn btn-outline-primary col-sm-6 check-in">Check In </button>
                             </form>
                         </div>
-
 
 
 

@@ -13,10 +13,11 @@ if (isset($_POST['checkin-am'])) {
     $sql = "INSERT INTO attendance (`attendance_emp_id`,`emp_name`,`emp_email`,`checkin_am`,`date`) VALUES ('$id','$name','$email','$check_in_am','$date')";
 
     $result = mysqli_query($conn, $sql);
-    if($result)
-{
+    if($result){
+    $last=mysqli_insert_id($conn);
+    $_SESSION['att_id']=$last;
     $_SESSION['status']="Check In AM Inserted";
     header('location:home2.php');
-}
+    }
 }
 
