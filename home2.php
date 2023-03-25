@@ -3,9 +3,6 @@ session_start();
 
 include('connect.php');
 include "head.php";
-
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,28 +11,32 @@ include "head.php";
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Log Time</title>
     <style>
         body {
             background: url(img/eLogo.jpeg);
         }
-        h3{
-	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    
-}
+
+        h3 {
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+        }
     </style>
     <script>
         function hidediv() {
             document.getElementById('message').style.visibility = "hidden";
         }
         setTimeout("hidediv()", 2000)
+
+        //Get form element
+        //onclick="localStorage.buttonDisabled='disabled'; this.disabled=localStorage.buttonDisabled" 
     </script>
 </head>
 
 <body>
 
     <div class="page page-center ">
-        <div class="container container-tight py-4" >
+        <div class="container container-tight py-4">
             <div class="text-center mb-4 ">
                 <a href="#" class="navbar-brand navbar-brand-autodark"></a>
             </div>
@@ -86,7 +87,7 @@ include "head.php";
                                     </div>
                                 </div>
                             <?php }
-                            if(isset($_SESSION['status1'])){?>
+                            if (isset($_SESSION['status1'])) { ?>
                                 <div class="mx-auto mt-3">
                                     <div>
                                         <h5 class="alert-title text-red">
@@ -98,9 +99,9 @@ include "head.php";
                                         </h5>
                                     </div>
                                 </div>
-                               <?php } ?>
-                               <?php 
-                            if(isset($_SESSION['status2'])){?>
+                            <?php } 
+                            
+                            if (isset($_SESSION['status2'])) { ?>
                                 <div class="mx-auto mt-3">
                                     <div>
                                         <h5 class="alert-title text-red">
@@ -112,9 +113,9 @@ include "head.php";
                                         </h5>
                                     </div>
                                 </div>
-                               <?php } ?>
-                               <?php
-                            if(isset($_SESSION['status3'])){?>
+                            <?php }
+                            
+                            if (isset($_SESSION['status3'])) { ?>
                                 <div class="mx-auto mt-3">
                                     <div>
                                         <h5 class="alert-title text-red">
@@ -126,38 +127,50 @@ include "head.php";
                                         </h5>
                                     </div>
                                 </div>
-                               <?php } ?>
+                            <?php } ?>
                         </div>
-
                         <div class="mt-3">
-                            <form action="checkin_am.php" method="post" id="checkin1">
+                       
+                            <form action="checkin_am.php" method="POST" id="checkin1">
                                 <input type="hidden" value="1" name="type">
                                 <button type="submit" name="checkin-am" id="checkin-am" class="btn btn-outline-primary col-sm-6 check-in">Check In </button>
                             </form>
+                           
+
                         </div>
 
 
 
                         <div class="mt-2">
-                            <form action="checkout_am_pm.php" method="post" id="checkout1">
-                                <input type="hidden" value="2" name="type">
-                                <button type="submit" name="checkout-am-pm" id="checkout-am-pm" class="btn btn-outline-primary col-sm-6 check-out-am-pm">Check-Out AM/PM</button>
-                            </form>
+                         
+                                <form action="checkout_am_pm.php" method="post" id="checkout1">
+                                    <input type="hidden" value="2" name="type">
+                                    <button type="submit" name="checkout-am-pm" id="checkout-am-pm" class="btn btn-outline-primary col-sm-6 check-out-am-pm">Check-Out AM/PM</button>
+                                </form>
+
                         </div>
 
 
                         <div class="mt-2">
+                        
                             <form action="checkin_pm.php" method="post" id="checkin2">
                                 <input type="hidden" value="3" name="type">
                                 <button type="submit" name="checkin-pm" id="checkin-pm" class="btn btn-outline-primary col-sm-6 check-in-pm">Check-In PM</button>
                             </form>
+
+                         
+
                         </div>
 
                         <div class="mt-2">
+                       
                             <form action="checkout_pm.php" method="post" id="checkout2">
                                 <input type="hidden" value="4" name="type">
                                 <button type="submit" name="checkout-pm" id="checkout-pm" class="btn btn-outline-primary col-sm-6 check-out">Check-Out</button>
                             </form>
+
+                           
+
                         </div>
                     </div>
 
@@ -166,8 +179,12 @@ include "head.php";
         </div>
     </div>
     </div>
+</body>
 
-    <!--
+</html>
+
+
+<!--
 <script type="text/javascript">
     $(document).ready(function() {
 
@@ -194,6 +211,3 @@ include "head.php";
     });
 </script>
 -->
-</body>
-
-</html>

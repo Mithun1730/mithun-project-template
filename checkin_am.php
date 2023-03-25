@@ -3,7 +3,6 @@ session_start();
 include "connect.php";
 
 if (isset($_POST['checkin-am'])) {
-
     $id = $_SESSION['id'];
     $name = $_SESSION['username'];
     $email = $_SESSION['email'];
@@ -20,4 +19,4 @@ if (isset($_POST['checkin-am'])) {
     header('location:home2.php');
     }
 }
-
+?>
