@@ -21,7 +21,6 @@ if(isset($_POST['login'])){
     header('location:signin.php');
    }           
 }    
-
   } else{
     header('location:signin.php');
   }                      
