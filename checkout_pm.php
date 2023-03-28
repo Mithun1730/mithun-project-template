@@ -18,13 +18,12 @@ if (isset($_POST['checkout-pm'])) {
                                 $checkin_pm = strtotime($row['checkin_pm']);
                                 $checkout_pm = strtotime($row['checkout_pm']);
 
+
                                 $timediff1 = abs($checkout_am_pm - $checkin_am); //time_difference 1
                                 $timediff2 = abs($checkout_pm - $checkin_pm);   //time_difference 2
 
                                 $hr1 = floor($timediff1 / (60 * 60)); //hour 1
                                 $hr2 = floor($timediff2 / (60 * 60)); //hour 2
-
-
 
                                 $min1 = floor($timediff1 / 60 % 60);  //minutes1
                                 $min2 = floor($timediff2 / 60 % 60);  //minutes2
@@ -49,7 +48,16 @@ if (isset($_POST['checkout-pm'])) {
 
                                 $hours = abs($hr1 + $hr2);   //total_hours
 
-                                $query = "INSERT INTO attendance ('total_hours',`attendance_emp_id`) VALUES('3', '$emp_id')  WHERE attendance_id = '$id'";
+                                // print_r($timediff1.'<br>');
+                                // print_r($timediff2.'<br>');
+                                // print_r($hr1.'<br>');
+                                // print_r($hr2.'<br>');
+                                // print_r($id.'<br>');
+                                // print_r($emp_id.'<br>');
+                                // print_r($hours.'<br>');
+                                // exit;
+                                // $query = "INSERT INTO attendance ('total_hours',`attendance_emp_id`) VALUES('3', '$emp_id')  WHERE attendance_id = '$id'";
+                                $query = "UPDATE attendance SET `total_hours` = '$hours' WHERE attendance_id  = $id ";
                                 $result3 = mysqli_query($conn, $query);
                                 $_SESSION['status3'] = "Checkout PM Inserted";
                                 header('location:home2.php');
