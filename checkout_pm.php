@@ -5,7 +5,7 @@ if (isset($_POST['checkout-pm'])) {
         $hours = $_SESSION['hours'];
         $emp_id = $_SESSION['id'];
         $id = $_SESSION['att_id'];
-        $date = date('Y-m-d h-i-s');
+        $date = date('Y-m-d H-i-s');
         $sql = "UPDATE attendance SET `checkout_pm` = '$date',`attendance_emp_id` = '$emp_id' WHERE attendance_id = $id ";
         $result = mysqli_query($conn, $sql);
         if ($result) {
@@ -36,15 +36,6 @@ if (isset($_POST['checkout-pm'])) {
                                 $sec = abs($sec1 + $sec2);  //total_seconds
 
 
-                                if ($mins >= 60) {
-                                        $hours = $hours + 1;
-                                        $mins = $mins - 60;
-                                }
-
-                                if ($sec >= 60) {
-                                        $sec = $sec - 60;
-                                        $mins = $mins + 1;
-                                }
 
                                 $hours = abs($hr1 + $hr2);   //total_hours
 

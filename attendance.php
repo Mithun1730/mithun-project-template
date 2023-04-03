@@ -63,44 +63,52 @@
                 <td><?php echo $row['checkin_pm'] ?></td>
                 <td><?php echo $row['checkout_pm'] ?></td>
                 <td><?php echo $row['date'] ?></td>
-                <td><span class="badge badge-outline bg-orange-lt"> <?php
-                                                                    $checkin_am = strtotime($row['checkin_am']);
-                                                                    $checkout_am_pm = strtotime($row['checkout_am_pm']);
-                                                                    $checkin_pm = strtotime($row['checkin_pm']);
-                                                                    $checkout_pm = strtotime($row['checkout_pm']);
-                                                                    $timediff1 = abs($checkout_am_pm - $checkin_am);
-                                                                    $timediff2 = abs($checkout_pm - $checkin_pm);
+                <td><span class="badge badge-outline bg-orange-lt">
 
-                                                                    $hr1 = floor($timediff1 / (60 * 60));
-                                                                    $hr2 = floor($timediff2 / (60 * 60));
+                    <?php
 
-                                                                    $hours = abs($hr1 + $hr2);
+                      $checkin_am = strtotime($row['checkin_am']);
+                      $checkout_am_pm = strtotime($row['checkout_am_pm']);
+                      $checkin_pm = strtotime($row['checkin_pm']);
+                      $checkout_pm = strtotime($row['checkout_pm']);
 
-                                                                    $min1 = floor($timediff1 / 60 % 60);
-                                                                    $min2 = floor($timediff2 / 60 % 60);
+                      $timediff1 = abs($checkout_am_pm - $checkin_am);
+                      $timediff2 = abs($checkout_pm - $checkin_pm);
 
-                                                                    $mins = abs($min1 + $min2);
+                      $hr1 = floor($timediff1 / (60 * 60));
+                      $hr2 = floor($timediff2 / (60 * 60));
+
+                      $hours = abs($hr1 + $hr2);
+
+                      $min1 = floor($timediff1 / 60 % 60);
+                      $min2 = floor($timediff2 / 60 % 60);
 
 
+                      $mins = abs($min1 + $min2);
 
-                                                                    $sec1 = floor($timediff1 % 60);
-                                                                    $sec2 = floor($timediff2 % 60);
 
-                                                                    $sec = abs($sec1 + $sec2);
+                      $sec1 = floor($timediff1 % 60);
+                      $sec2 = floor($timediff2 % 60);
 
-                                                                    if ($mins >= 60) {
-                                                                      $hours = $hours + 1;
-                                                                      $mins = $mins - 60;
-                                                                    }
 
-                                                                    if ($sec >= 60) {
-                                                                      $sec = $sec - 60;
-                                                                      $mins = $mins + 1;
-                                                                    }
+                      $sec = abs($sec1 + $sec2);
 
-                                                                    echo $hours . 'h' . " " . $mins . 'm' . " " . $sec . 's';
 
-                                                                    ?></span></td>
+                      if ($mins >= 60) {
+                      $hours = $hours + 1;
+                      $mins = $mins - 60;
+                      }
+
+                      if ($sec >= 60) {
+                        $sec = $sec - 60;
+                        $mins = $mins + 1;
+                      }
+
+                      echo $hours . 'h' . " " . $mins . 'm' . " " . $sec . 's';
+
+                    ?>
+                    </span>
+                  </td>
                 <td class="sort-progress" data-progress="30">
                   <div class="row align-items-center">
                     <div class="col-12 col-lg-auto">30%</div>
@@ -133,19 +141,21 @@
             <td> <?php echo $row['emp_name'] ?> </td>
 
             <td><?php echo $row['emp_email'] ?></td>
+
             <td><span class="badge badge-outline text-teal">Logged In</span></td>
 
+            <td><strong><?php echo date('h:i:s a ',strtotime($row['checkin_am'])) ?></strong></td>
+            <td><strong><?php  echo date('h:i:s a ',strtotime($row['checkout_am_pm']))?></strong></td>
+            <td><strong><?php echo date('h:i:s a ',strtotime($row['checkin_pm']))?></strong></td>
+            <td><strong><?php echo date('h:i:s a ',strtotime($row['checkout_pm'])) ?></strong></td>
+          
 
-            <td><strong><?php echo $row['checkin_am'] ?></strong></td>
-            <td><strong><?php echo $row['checkout_am_pm'] ?></strong></td>
-            <td><strong><?php echo $row['checkin_pm'] ?></strong></td>
-            <td><strong><?php echo $row['checkout_pm'] ?></strong></td>
-
-
-            <td><div class="text-primary"><?php echo $row['date'] ?></div></td>
+            <td>
+              <div class="text-primary"><?php echo $row['date'] ?></div>
+            </td>
             <td><span class="badge badge-pill bg-orange-lt">
                 <?php
-                
+                    if(!empty($row['checkin_am']) && !empty($row['checkout_am_pm']) && !empty($row['checkin_pm']) && !empty($row['checkout_pm'])){
                     $checkin_am = strtotime($row['checkin_am']);
                     $checkout_am_pm = strtotime($row['checkout_am_pm']);
                     $checkin_pm = strtotime($row['checkin_pm']);
@@ -171,10 +181,10 @@
                     $sec = abs($sec1 + $sec2);
 
 
-                    if ($mins >= 60) {
+                   if ($mins >= 60) {
                       $hours = $hours + 1;
                       $mins = $mins - 60;
-                    }
+                   }
 
                     if ($sec >= 60) {
                       $sec = $sec - 60;
@@ -183,13 +193,13 @@
 
                     $_SESSION['hours'] = $hours;
                     echo $hours . 'h' . " " . $mins . 'm' . " " . $sec . 's';
-                
 
-                    
+                  }
+
 
                 ?>
-                </span> 
-               </td>
+              </span>
+            </td>
 
             <td class="sort-progress" data-progress="30">
               <div class="row align-items-center">
@@ -215,4 +225,4 @@
 </div>
 
 
-<?php include('footer.php')?>
+<?php include('footer.php') ?>
