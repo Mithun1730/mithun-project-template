@@ -71,7 +71,7 @@
             $sql2= " SELECT attendance_emp_id, count(emp_name) AS present FROM attendance GROUP BY attendance_emp_id ";
             $result2 = mysqli_query($conn,$sql2);
             $row = mysqli_fetch_array($result2);
-            echo abs($diff - $row); 
+            echo abs($diff - $row['present']); 
             ?>
             <td>
               <a href="#">Edit</a>
