@@ -2,7 +2,14 @@
 <?php session_start(); ?>
 <?php include("head.php") ?>
 <?php include("navbar.php") ?>
-
+<head>
+  <style>
+    body{
+      background-color: white;
+    }
+  </style>
+</head>
+<body>
 
 <div class="page-body">
   <div class="container-xl">
@@ -223,6 +230,8 @@
     </div>
   </div>
 </div>
+  
+</body>
 
 
 <?php include('footer.php') ?>

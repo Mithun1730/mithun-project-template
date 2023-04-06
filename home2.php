@@ -34,6 +34,10 @@ $row = mysqli_fetch_array($result);
         //Get form element
         //onclick="localStorage.buttonDisabled='disabled'; this.disabled=localStorage.buttonDisabled" 
     </script>
+
+
+
+
 </head>
 
 <body>
@@ -49,15 +53,10 @@ $row = mysqli_fetch_array($result);
 
                     <div class="card bg-white">
                         <a class="nav-link mt-2 mr-2" href="logout.php">
-                            <span
-                                class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
-                                <svg xmlns="http://www.w3.org/2000/svg"
-                                    class="icon icon-tabler icon-tabler-logout text-muted" width="25" height="25"
-                                    viewBox="0 0 25 25" stroke-width="2" stroke="currentColor" fill="none"
-                                    stroke-linecap="round" stroke-linejoin="round">
+                            <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-logout text-muted" width="25" height="25" viewBox="0 0 25 25" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                    <path
-                                        d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2">
+                                    <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2">
                                     </path>
                                     <path d="M7 12h14l-3 -3m0 6l3 -3"></path>
                                 </svg>
@@ -92,10 +91,7 @@ $row = mysqli_fetch_array($result);
                                 <div class="mx-auto mt-3">
                                     <div>
                                         <h5 class="alert-title text-red">
-                                            <svg xmlns="http://www.w3.org/2000/svg"
-                                                class="icon icon-tabler icon-tabler-check" width="100" height="100"
-                                                viewBox="0 0 24 24" stroke-width="1.5" stroke="#ff2825" fill="none"
-                                                stroke-linecap="round" stroke-linejoin="round">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check" width="100" height="100" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ff2825" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                                 <path d="M5 12l5 5l10 -10" />
                                             </svg>
@@ -108,10 +104,7 @@ $row = mysqli_fetch_array($result);
                                 <div class="mx-auto mt-3">
                                     <div>
                                         <h5 class="alert-title text-red">
-                                            <svg xmlns="http://www.w3.org/2000/svg"
-                                                class="icon icon-tabler icon-tabler-check" width="100" height="100"
-                                                viewBox="0 0 24 24" stroke-width="1.5" stroke="#ff2825" fill="none"
-                                                stroke-linecap="round" stroke-linejoin="round">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check" width="100" height="100" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ff2825" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                                 <path d="M5 12l5 5l10 -10" />
                                             </svg>
@@ -125,10 +118,7 @@ $row = mysqli_fetch_array($result);
                                 <div class="mx-auto mt-3">
                                     <div>
                                         <h5 class="alert-title text-red">
-                                            <svg xmlns="http://www.w3.org/2000/svg"
-                                                class="icon icon-tabler icon-tabler-check" width="100" height="100"
-                                                viewBox="0 0 24 24" stroke-width="1.5" stroke="#ff2825" fill="none"
-                                                stroke-linecap="round" stroke-linejoin="round">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check" width="100" height="100" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ff2825" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                                 <path d="M5 12l5 5l10 -10" />
                                             </svg>
@@ -141,10 +131,7 @@ $row = mysqli_fetch_array($result);
                                 <div class="mx-auto mt-3">
                                     <div>
                                         <h5 class="alert-title text-red">
-                                            <svg xmlns="http://www.w3.org/2000/svg"
-                                                class="icon icon-tabler icon-tabler-check" width="100" height="100"
-                                                viewBox="0 0 24 24" stroke-width="1.5" stroke="#ff2825" fill="none"
-                                                stroke-linecap="round" stroke-linejoin="round">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check" width="100" height="100" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ff2825" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                                 <path d="M5 12l5 5l10 -10" />
                                             </svg>
@@ -154,49 +141,45 @@ $row = mysqli_fetch_array($result);
                                 </div>
                             <?php } ?>
                         </div>
-                        <?php
-                        if (empty($row['checkin_am'])) { ?>
+
+                        <?php if ($_SESSION['att_id'] = '') { ?>
+
                             <div class="mt-3">
                                 <form action="checkin_am.php" method="POST" id="checkin1">
                                     <input type="hidden" value="1" name="type">
-                                    <button type="submit" name="checkin-am" id="checkin-am"
-                                        class="btn btn-outline-primary col-sm-6 check-in">Check In </button>
+                                    <button type="submit" name="checkin-am" id="checkin-am" class="btn btn-outline-primary col-sm-6 check-in">Check In </button>
                                 </form>
                             </div>
-                        <?php } ?>
-                        <?php
-                        if (empty($row['checkout_am_pm'])) { ?>
-                            <div class="mt-2">
-                                <form action="checkout_am_pm.php" method="post" id="checkout1">
-                                    <input type="hidden" value="2" name="type">
-                                    <button type="submit" name="checkout-am-pm" id="checkout-am-pm"
-                                        class="btn btn-outline-primary col-sm-6 check-out-am-pm">Check-Out AM/PM</button>
-                                </form>
-                            </div>
-                        <?php } ?>
+                       
 
-                        <?php
-                        if (empty($row['checkin_pm'])) { ?>
-                            <div class="mt-2">
-                                <form action="checkin_pm.php" method="post" id="checkin2">
-                                    <input type="hidden" value="3" name="type">
-                                    <button type="submit" name="checkin-pm" id="checkin-pm"
-                                        class="btn btn-outline-primary col-sm-6 check-in-pm">Check-In PM</button>
-                                </form>
-                            </div>
-                        <?php } ?>
-                        <?php
-                        if (empty($row['checkout_pm'])) { ?>
-                            <div class="mt-2">
-                                <form action="checkout_pm.php" method="post" id="checkout2">
-                                    <input type="hidden" value="4" name="type">
-                                    <button type="submit" name="checkout-pm" id="checkout-pm"
-                                        class="btn btn-outline-primary col-sm-6 check-out">Check-Out</button>
-                                </form>
-                            </div>
-                        <?php }else{ ?>
-                        <p> <?php echo $_SESSION['username'] ?> We Meet next day</p>
-                        <?php } ?>
+<?php }else{
+   echo ' <button type= "submit" name="checkin-am" id="checkin-am" class="btn btn-outline-primary col-sm-6 check-in" disabled>Check In </button>';
+    } ?>
+
+
+                        <div class="mt-2">
+                            <form action="checkout_am_pm.php" method="post" id="checkout1">
+                                <input type="hidden" value="2" name="type">
+                                <button type="submit" name="checkout-am-pm" id="checkout-am-pm" class="btn btn-outline-primary col-sm-6 check-out-am-pm">Check-Out AM/PM</button>
+                            </form>
+                        </div>
+
+
+                        <div class="mt-2">
+                            <form action="checkin_pm.php" method="post" id="checkin2">
+                                <input type="hidden" value="3" name="type">
+                                <button type="submit" name="checkin-pm" id="checkin-pm" class="btn btn-outline-primary col-sm-6 check-in-pm">Check-In PM</button>
+                            </form>
+                        </div>
+
+                        <div class="mt-2">
+                            <form action="checkout_pm.php" method="post" id="checkout2">
+                                <input type="hidden" value="4" name="type">
+                                <button type="submit" name="checkout-pm" id="checkout-pm" class="btn btn-outline-primary col-sm-6 check-out">Check-Out</button>
+                            </form>
+                        </div>
+
+
                     </div>
                 </div>
             </div>

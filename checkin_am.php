@@ -1,3 +1,4 @@
+
 <?php
 session_start();
 include "connect.php";
@@ -17,7 +18,10 @@ if (isset($_POST['checkin-am'])) {
     $last=mysqli_insert_id($conn);
     $_SESSION['att_id']=$last;
     $_SESSION['status']="Check In AM Inserted";
+    
     header('location:home2.php');
+    echo ' <button type= "submit" name="checkin-am" id="checkin-am" class="btn btn-outline-primary col-sm-6 check-in" disabled>Check In </button>';
+    
     }
 }
 ?>

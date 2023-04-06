@@ -15,10 +15,9 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="ajax.js"></script>
 
-
-
 </head>
-
+<body>
+  
   <div class=" mx-auto mt-2 mb-2">
     
       <form class="form-inline" method="GET">
@@ -68,11 +67,8 @@
     $from = $_GET['from'];
     $to = $_GET['to'];
 
-    $sql = " SELECT * FROM attendance WHERE date >= '$from' AND date <= '$to' ";
-    
-   //  $sql .= " SELECT attendance_emp_id, count(emp_name) AS present FROM attendance GROUP BY attendance_emp_id ; UNION ALL";
-
-    // $sql .= " SELECT attendance_emp_id, sum(total_hours) AS total FROM attendance GROUP BY attendance_emp_id ; ";
+    $sql = " SELECT DISTINCT attendance_emp_id,emp_name,emp_title,emp_email FROM attendance WHERE date >= '$from' AND date <= '$to' ";
+  
 
     $result = mysqli_query($conn,$sql);
    
@@ -82,7 +78,7 @@
        ?>
    
  <tr>
-                  <td><?php echo $row['attendance_emp_id'] ?></td>
+                  <td><?php echo $row['attendance_emp_id']  ?></td>
                   <td><?php echo $row['emp_name'] ?></td>
                   <td class="text-muted">
                     <?php echo $row['emp_title'] ?>
@@ -197,7 +193,8 @@
     </div>
   </div>
 
- 
+</body>
+<?php include('footer.php') ?>
 
   
 
