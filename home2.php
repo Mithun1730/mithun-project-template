@@ -4,12 +4,14 @@ session_start();
 include('connect.php');
 include "head.php";
 $employee_id = $_SESSION['id'];
-$result = mysqli_query($conn, "SELECT * FROM attendance where attendance_emp_id = $employee_id");
-$row = mysqli_fetch_array($result);
+if($employee_id){
+    $result = mysqli_query($conn, "SELECT * FROM attendance where attendance_emp_id = $employee_id");
+    $row = mysqli_fetch_array($result);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
+<?php echo'<h1>session id = '.$_SESSION['id'].'</h1>' ?>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -154,8 +156,14 @@ $row = mysqli_fetch_array($result);
                                 </div>
                             <?php } ?>
                         </div>
+<<<<<<< Updated upstream
                         <?php
                         if (empty($row['checkin_am'])) { ?>
+=======
+
+                        <?php if (isset($_SESSION['id'])) { ?>
+
+>>>>>>> Stashed changes
                             <div class="mt-3">
                                 <form action="checkin_am.php" method="POST" id="checkin1">
                                     <input type="hidden" value="1" name="type">
@@ -163,6 +171,7 @@ $row = mysqli_fetch_array($result);
                                         class="btn btn-outline-primary col-sm-6 check-in">Check In </button>
                                 </form>
                             </div>
+<<<<<<< Updated upstream
                         <?php } ?>
                         <?php
                         if (empty($row['checkout_am_pm'])) { ?>
@@ -174,6 +183,33 @@ $row = mysqli_fetch_array($result);
                                 </form>
                             </div>
                         <?php } ?>
+=======
+                    <?php } ?>
+
+
+                        <div class="mt-2">
+                            <form action="checkout_am_pm.php" method="post" id="checkout1">
+                                <input type="hidden" value="2" name="type">
+                                <button type="submit" name="checkout-am-pm" id="checkout-am-pm" class="btn btn-outline-primary col-sm-6 check-out-am-pm">Check-Out AM/PM</button>
+                            </form>
+                        </div>
+
+
+                        <div class="mt-2">
+                            <form action="checkin_pm.php" method="post" id="checkin2">
+                                <input type="hidden" value="3" name="type">
+                                <button type="submit" name="checkin-pm" id="checkin-pm" class="btn btn-outline-primary col-sm-6 check-in-pm">Check-In PM</button>
+                            </form>
+                        </div>
+
+                        <div class="mt-2">
+                            <form action="checkout_pm.php" method="post" id="checkout2">
+                                <input type="hidden" value="4" name="type">
+                                <button type="submit" name="checkout-pm" id="checkout-pm" class="btn btn-outline-primary col-sm-6 check-out">Check-Out</button>
+                            </form>
+                        </div>
+
+>>>>>>> Stashed changes
 
                         <?php
                         if (empty($row['checkin_pm'])) { ?>
