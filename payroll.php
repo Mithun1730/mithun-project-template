@@ -90,12 +90,11 @@
                    
                   <td>
                   <?php
-                  $sql2= " SELECT attendance_emp_id, count(emp_name) AS present FROM attendance GROUP BY attendance_emp_id " ; 
+                  $sql2= " SELECT attendance_emp_id, count(emp_name) AS present FROM attendance GROUP BY attendance_emp_id "; 
                   $result2 = mysqli_query($conn,$sql2);
                   if($result2){
                     $row = mysqli_fetch_array($result2);
                       echo $row['present'];
-                
                   }
                   ?>
                   </td>
@@ -112,8 +111,11 @@
                   </td>
                           
                   <td>
-                    <button id=" <?php echo $row['attendance_emp_id'] ?>" data-target= "#payrollmodal" data-toggle="modal" class="btn btn-danger text-white" onclick="showDetails(this);">Generate</button>
-                
+                   
+                 <input type="hidden" name="id" value="<?php echo $row['attendance_emp_id'] ?>"> 
+                    <a href= "#payrollmodal" data-toggle="modal" class="edit">Generate
+                            </a>
+                 
                   </td>
                 </tr> 
                 <?php  } } }  ?>
@@ -123,24 +125,6 @@
     </div>
   </div>
 
-  <script>
-    function showDetails(button){
-        var selected_emp = button.id;
-        $.ajax({
-          url:'getdata.php',
-          method:'GET',
-          data:{"selected_emp":selected_emp},
-          success:function(response){
-            var employee = JSON.parse(response);
-            $('#id').text(employee.attendance_emp_id);
-            $('#name').text(employee.emp_name);
-            $('#title').text(employee.emp_title);
-            $('#email').text(employee.emp_email);
-            $('#mobile').text(employee.mobile);
-          }
-        });
-    }
-  </script>
 
   <div id="payrollmodal" class="modal fade">
     <div class="modal-dialog">
@@ -153,19 +137,20 @@
           <div class="modal-body">
           <div class="form-group">
               <label>ID</label>
-              <input type="text" id="id" value="<?php echo  $row['attendance_emp_id']?>" name="id" class="form-control" required>
+              <?php ?>
+              <input type="text" id="id"  name="id" class="form-control" required>
             </div>
             <div class="form-group">
               <label>Name</label>
-              <input type="text" id="name" value="<?php echo $row['emp_name']?>" name="name" class="form-control" required>
+              <input type="text" id="name" name="name" class="form-control" required>
             </div>
             <div class="form-group">
               <label>Title</label>
-              <input type="text" id="title" value="<?php echo $row['emp_title']?>" name="title" class="form-control" required>
+              <input type="text" id="title"   name="title" class="form-control" required>
             </div>
             <div class="form-group">
               <label>Email</label>
-              <input type="email" id="email" value="<?php echo $row['emp_email']?>" name="email" class="form-control" required>
+              <input type="email" id="email" name="email" class="form-control" required>
             </div>
             <div class="form-group">
               <label>Mobile No.</label>
@@ -175,18 +160,22 @@
 
             <div class="form-group">
               <label>Total Days Present</label>
-              <input type="text" id="title" name="title" class="form-control" required>
+              <input type="text" id="days" name="days" class="form-control" required>
             </div>
             <div class="form-group">
               <label>Total Hours Worked</label>
-              <input type="text" id="title" name="title" class="form-control" required>
+              <input type="text" id="hours" name="hours" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label>Leaves Taken</label>
+              <input type="text" id="leaves" name="leaves" class="form-control" required>
             </div>
 
           </div>
           <div class="modal-footer">
 
             <input type="button" class="btn btn-danger" data-dismiss="modal" value="Cancel">
-            <button type="submit"   class="btn btn-primary">Generate PDF</button>
+            <button type="submit" name="generate"  class="btn btn-primary">Generate PDF</button>
           </div>
         </form>
       </div>
