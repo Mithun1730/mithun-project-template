@@ -67,7 +67,7 @@
     $from = $_GET['from'];
     $to = $_GET['to'];
 
-    $sql = " SELECT DISTINCT attendance_emp_id,emp_name,emp_title,emp_email FROM attendance WHERE date >= '$from' AND date <= '$to' ";
+    $sql = " SELECT attendance_emp_id, count(attendance_emp_id) AS present,sum(total_hours) AS total,  emp_name ,emp_title,emp_email FROM attendance GROUP BY attendance_emp_id ";
   
 
     $result = mysqli_query($conn,$sql);
@@ -90,23 +90,17 @@
                    
                   <td>
                   <?php
-                  $sql2= " SELECT attendance_emp_id, count(emp_name) AS present FROM attendance GROUP BY attendance_emp_id "; 
-                  $result2 = mysqli_query($conn,$sql2);
-                  if($result2){
-                    $row = mysqli_fetch_array($result2);
+               
                       echo $row['present'];
-                  }
+                              
                   ?>
                   </td>
                   <td>
                   <?php
-                 $sql3= " SELECT attendance_emp_id, sum(total_hours) AS total FROM attendance GROUP BY attendance_emp_id ";
-                  $result3 = mysqli_query($conn,$sql3);
-                  if($result3){
-                    $row = mysqli_fetch_array($result3);
+                
                       echo $row['total'];
                 
-                  }
+                 
                   ?>
                   </td>
                           
@@ -118,7 +112,7 @@
                  
                   </td>
                 </tr> 
-                <?php  } } }  ?>
+                <?php  }  } }  ?>
           </tbody>
         </table>
       </div>

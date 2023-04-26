@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 
 include('connect.php');
@@ -49,10 +50,11 @@ $row = mysqli_fetch_array($result);
 
 </head>
 
-<body>
+
+<body onload="getLocation();" class="bg-primary">
     <div class="page page-center">
         <div class="container-fluid w-50 p-3">
-            
+
             <div class="card card-md mx-auto bg-primary">
 
                 <div class="card-body">
@@ -60,22 +62,22 @@ $row = mysqli_fetch_array($result);
                     <h2 class="h2 text-center mb-4 text-white">Dashboard</h2>
 
                     <div class="card bg-white">
-                        
+
                         <div>
 
-                        
-                        <a class="nav-link mt-2 mr-2" href="logout.php">
-                       
+
+                            <a class="nav-link mt-2 mr-2" href="logout.php">
+
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-logout" width="30" height="30" viewBox="0 0 30 30" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                     <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2">
                                     </path>
                                     <path d="M7 12h14l-3 -3m0 6l3 -3"></path>
                                 </svg>
-                        <b>Logout</b> 
-    </div>                       
-                                
-                           
+                                <b>Logout</b>
+                        </div>
+
+
                         </a>
                         <div class="card-body p-1 text-center ">
                             <h3 class="m-0 mb-1"><span id="username">
@@ -155,14 +157,14 @@ $row = mysqli_fetch_array($result);
 
 
                         <div class="mt-3">
-                            <form action="checkin_am.php" method="POST" id="checkin1">
+                            <form action="checkin_am.php" class="checkin" method="POST" id="checkin1">
                                 <input type="hidden" value="1" name="type">
+                                <input type="hidden" name="latitude" value="">
+                                <input type="hidden" name="longitude" value="">
                                 <button type="submit" name="checkin-am" id="checkin-am" class="btn btn-outline-primary col-sm-5 check-in">Check In </button>
                             </form>
-                        </div>
-
-
-
+                        </div>    
+                                                   
 
 
                         <div class="mt-2">
@@ -180,61 +182,60 @@ $row = mysqli_fetch_array($result);
                             </form>
                         </div>
 
-                        
+
 
                         <div class="fluid mt-2">
                             <form action="checkout_pm.php" method="post" id="checkout2">
                                 <input type="hidden" value="4" name="type">
                                 <button type="submit" name="checkout-pm" id="checkout-pm" class="btn btn-outline-primary col-sm-5 check-out">Check-Out</button>
-                            </form>  
-    
+                            </form>
+
                         </div>
 
-                        
-                       <!--Response-->
-                     <?php  if (isset($_SESSION['report'])) { echo $_SESSION['report']; }?>
+
+                        <!--Response-->
                         <button type="button" class="btn btn-warning col-sm-1-pd mb-5 mr-3 float-right" data-toggle="modal" data-target="#exampleModal">
-                           <span>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
-                            <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/>
-                            </svg>
+                            <span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
+                                    <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z" />
+                                </svg>
                             </span>
                         </button>
-                   
+
                         <!--Response-->
 
                         <!-- Modal -->
                         <form action="sheet.php" method="POST">
-                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Daily Work Sheet</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="mb-3">
-                                            
-                                            <textarea class="form-control" name="textarea" rows="6" placeholder="Content.."></textarea>
-                                            <script>
-                                                const text = document.querySelector('textarea');
-                                                text.addEventListener("keyup",e=>{
-                                                    text.style.height = "200px";
-                                                    
-                                                    let height = e.target.scrollHeight;
-                                                    text.style.height ='$(height)px'
-                                                });
-                                            </script>
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Daily Work Sheet</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="mb-3">
+
+                                                <textarea class="form-control" name="textarea" rows="6" placeholder="Content.."></textarea>
+                                                <script>
+                                                    const text = document.querySelector('textarea');
+                                                    text.addEventListener("keyup", e => {
+                                                        text.style.height = "200px";
+
+                                                        let height = e.target.scrollHeight;
+                                                        text.style.height = '$(height)px'
+                                                    });
+                                                </script>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-primary" name='response'> Add Response </a>
                                         </div>
                                     </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary" name='response'> Add Response </a>
-                                    </div>
                                 </div>
-                            </div>
                             </div>
                         </form>
 
@@ -248,6 +249,28 @@ $row = mysqli_fetch_array($result);
 </body>
 
 </html>
+
+<script type="text/javascript">
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition, showError);
+        }
+    }
+
+    function showPosition(position) {
+        document.querySelector('.checkin input[name="latitude"]').value = position.coords.latitude;
+        document.querySelector('.checkin input[name="longitude"]').value = position.coords.longitude;
+    }
+
+    function showError(error) {
+        switch (error.code) {
+            case error.PERMISSION_DENIED:
+                alert("Allow Location Access For Login");
+                location.reload();
+                break;
+        }
+    }
+</script>
 
 
 <!--

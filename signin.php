@@ -17,11 +17,10 @@ include "connect.php";
 <div class="page page-center">
   <div class="container container-tight  ">
     <div class="text-center mx-auto">
-      <!--<a href="#" class="navbar-brand navbar-brand-autodark"><img src="C:/Users/ASUS/OneDrive/Desktop/Logo.png"
-          height="40" alt=""></a>-->
+  
     </div>
 
-    <div class="card card-md mx-auto" ">
+    <div class="card card-md mx-auto">
       <div class="card-body">
         <h2 class="h2 text-center text-primary mb-4">Attendance Register</h2>
         <?php 

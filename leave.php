@@ -63,34 +63,38 @@
     $from = $_GET['from'];
     $to = $_GET['to'];
     $secs_per_day = 24 * 60 * 60;
-    $diff = abs( (strtotime($from) - strtotime($to)) / $secs_per_day );
+    $diff = abs( (strtotime($from) - strtotime($to)) / $secs_per_day ) + 1;
     
 
    
-    $sql="SELECT DISTINCT attendance_emp_id,emp_name,emp_title,emp_email FROM attendance WHERE date >= '$from' AND date <= '$to'";
+    //SELECT attendance_emp_id, count(emp_name) AS present ,emp_name,emp_email,emp_title FROM attendance GROUP BY attendance_emp_id
+    $sql="SELECT attendance_emp_id, count(emp_name) AS present,emp_name,emp_email,emp_title FROM attendance GROUP BY attendance_emp_id ";
     $result = mysqli_query($conn,$sql);
     if($result){
       while($row = mysqli_fetch_array($result)){
-        
+
+        // $sql2= " SELECT attendance_emp_id, count(emp_name) AS present FROM attendance GROUP BY $id ";
+          //  $result2 = mysqli_query($conn,$sql2);
+           // if($result2){
+           // while($row2 = mysqli_fetch_assoc($result2)){
         ?>
             <td><?php echo $row['emp_name']?></td>
+
             <td class="text-muted">
             <?php echo $row['emp_title']?>
             </td>
+
             <td class="text-muted"><a href="#" class="text-reset"><?php echo $row['emp_email']?></a></td>
             
             <td class="text-muted">
-              <?php
-            $sql2= " SELECT attendance_emp_id, count(emp_name) AS present FROM attendance GROUP BY attendance_emp_id ";
-            $result2 = mysqli_query($conn,$sql2);
-            $row = mysqli_fetch_array($result2);
-            echo abs($diff - $row['present']); 
-            ?>
+            <?php  echo abs($diff - $row['present']); ?>
+            </td>
+      
             <td>
               <a href="#">Edit</a>
             </td>
           </tr>
-          <?php  }} } ?>
+          <?php } } }  ?>
         </tbody>
       </table>
     </div>

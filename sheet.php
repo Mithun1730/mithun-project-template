@@ -10,7 +10,6 @@ if(isset($_POST['response'])){
         $sql = "UPDATE attendance SET `daily_report` = '$response',`attendance_emp_id` = '$emp_id' WHERE attendance_id = $id ";
         $result = mysqli_query($conn, $sql);
         if ($result) {
-            $_SESSION['report'] = "Thank You...";
             header("location:submission.php");
         }
     }
