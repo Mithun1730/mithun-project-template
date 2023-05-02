@@ -1,18 +1,32 @@
 <?php
+
 session_start();
 
 include('connect.php');
+<<<<<<< HEAD
 include "head.php";
 $employee_id = $_SESSION['id'];
 if($employee_id){
     $result = mysqli_query($conn, "SELECT * FROM attendance where attendance_emp_id = $employee_id");
     $row = mysqli_fetch_array($result);
 }
+=======
+include('head.php');
+>>>>>>> main
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <?php echo'<h1>session id = '.$_SESSION['id'].'</h1>' ?>
 <head>
+    <script src="/dist/js/popper.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,42 +50,44 @@ if($employee_id){
         //Get form element
         //onclick="localStorage.buttonDisabled='disabled'; this.disabled=localStorage.buttonDisabled" 
     </script>
+
+
+
+
 </head>
 
-<body>
-    <div class="page page-center ">
-        <div class="container container-tight py-4">
-            <div class="text-center mb-4 ">
-                <a href="#" class="navbar-brand navbar-brand-autodark"></a>
-            </div>
+
+<body onload="getLocation();" class="bg-primary">
+    <div class="page page-center">
+        <div class="container-fluid w-75 p-3">
+
             <div class="card card-md mx-auto bg-primary">
+
                 <div class="card-body">
 
                     <h2 class="h2 text-center mb-4 text-white">Dashboard</h2>
 
                     <div class="card bg-white">
-                        <a class="nav-link mt-2 mr-2" href="logout.php">
-                            <span
-                                class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
-                                <svg xmlns="http://www.w3.org/2000/svg"
-                                    class="icon icon-tabler icon-tabler-logout text-muted" width="25" height="25"
-                                    viewBox="0 0 25 25" stroke-width="2" stroke="currentColor" fill="none"
-                                    stroke-linecap="round" stroke-linejoin="round">
+
+                        <div>
+
+
+                            <a class="nav-link mt-2 mr-2" href="logout.php">
+
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-logout" width="30" height="30" viewBox="0 0 30 30" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                    <path
-                                        d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2">
+                                    <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2">
                                     </path>
                                     <path d="M7 12h14l-3 -3m0 6l3 -3"></path>
                                 </svg>
-                            </span>
-                            <span class="nav-link-title">
-                                <div class="text-muted"><b>Logout</b></div>
-                            </span>
-                        </a>
-                        <div class="card-body p-4 text-center ">
-                            <h3 class="m-0 mb-1"><span id="username">
-                                    <h3 class="m-0 mb-2 mx-auto display-6 text-red">EXCITEON</h3>
+                                <b>Logout</b>
+                        </div>
 
+
+                        </a>
+                        <div class="card-body p-1 text-center ">
+                            <h3 class="m-0 mb-1"><span id="username">
+                                    <img src="./img/Logo.png" alt="">
                                     <br> <a href="#">Welcome,
                                         <?php echo $_SESSION['username'] ?>
                                     </a>
@@ -81,7 +97,7 @@ if($employee_id){
                                     <?php echo $_SESSION['email'] ?>
                             </a>
                         </div>
-                        <h3 class="m-0 mb-2 mt-2">Employee ID:<span id="userid" class="text-red">
+                        <h3 class="m-0 mb-2 mt-2 display-7">Employee ID:<span id="userid" class="text-red">
                                 <?php echo $_SESSION['id'] ?>
                             </span></h3>
                         <div class="text-success">
@@ -94,14 +110,12 @@ if($employee_id){
                                 <div class="mx-auto mt-3">
                                     <div>
                                         <h5 class="alert-title text-red">
-                                            <svg xmlns="http://www.w3.org/2000/svg"
-                                                class="icon icon-tabler icon-tabler-check" width="100" height="100"
-                                                viewBox="0 0 24 24" stroke-width="1.5" stroke="#ff2825" fill="none"
-                                                stroke-linecap="round" stroke-linejoin="round">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check" width="25" height="25" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ff2825" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                                 <path d="M5 12l5 5l10 -10" />
                                             </svg>
-                                            <?php echo $_SESSION['status']; ?>
+                                            <?php echo $_SESSION['status']; 
+                                            unset($_SESSION['status']);?>
                                         </h5>
                                     </div>
                                 </div>
@@ -110,14 +124,12 @@ if($employee_id){
                                 <div class="mx-auto mt-3">
                                     <div>
                                         <h5 class="alert-title text-red">
-                                            <svg xmlns="http://www.w3.org/2000/svg"
-                                                class="icon icon-tabler icon-tabler-check" width="100" height="100"
-                                                viewBox="0 0 24 24" stroke-width="1.5" stroke="#ff2825" fill="none"
-                                                stroke-linecap="round" stroke-linejoin="round">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check" width="25" height="25" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ff2825" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                                 <path d="M5 12l5 5l10 -10" />
                                             </svg>
-                                            <?php echo $_SESSION['status1']; ?>
+                                            <?php echo $_SESSION['status1']; 
+                                            unset($_SESSION['status1']);?>
                                         </h5>
                                     </div>
                                 </div>
@@ -127,14 +139,12 @@ if($employee_id){
                                 <div class="mx-auto mt-3">
                                     <div>
                                         <h5 class="alert-title text-red">
-                                            <svg xmlns="http://www.w3.org/2000/svg"
-                                                class="icon icon-tabler icon-tabler-check" width="100" height="100"
-                                                viewBox="0 0 24 24" stroke-width="1.5" stroke="#ff2825" fill="none"
-                                                stroke-linecap="round" stroke-linejoin="round">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check" width="25" height="25" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ff2825" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                                 <path d="M5 12l5 5l10 -10" />
                                             </svg>
-                                            <?php echo $_SESSION['status2']; ?>
+                                            <?php echo $_SESSION['status2']; 
+                                            unset($_SESSION['status2']);?>
                                         </h5>
                                     </div>
                                 </div>
@@ -143,19 +153,18 @@ if($employee_id){
                                 <div class="mx-auto mt-3">
                                     <div>
                                         <h5 class="alert-title text-red">
-                                            <svg xmlns="http://www.w3.org/2000/svg"
-                                                class="icon icon-tabler icon-tabler-check" width="100" height="100"
-                                                viewBox="0 0 24 24" stroke-width="1.5" stroke="#ff2825" fill="none"
-                                                stroke-linecap="round" stroke-linejoin="round">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check" width="25" height="25" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ff2825" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                                 <path d="M5 12l5 5l10 -10" />
                                             </svg>
-                                            <?php echo $_SESSION['status3']; ?>
+                                            <?php echo $_SESSION['status3']; 
+                                            unset($_SESSION['status3']);?>
                                         </h5>
                                     </div>
                                 </div>
                             <?php } ?>
                         </div>
+<<<<<<< HEAD
 <<<<<<< Updated upstream
                         <?php
                         if (empty($row['checkin_am'])) { ?>
@@ -210,29 +219,118 @@ if($employee_id){
                         </div>
 
 >>>>>>> Stashed changes
+=======
+>>>>>>> main
 
-                        <?php
-                        if (empty($row['checkin_pm'])) { ?>
-                            <div class="mt-2">
-                                <form action="checkin_pm.php" method="post" id="checkin2">
-                                    <input type="hidden" value="3" name="type">
-                                    <button type="submit" name="checkin-pm" id="checkin-pm"
-                                        class="btn btn-outline-primary col-sm-6 check-in-pm">Check-In PM</button>
-                                </form>
+
+                        <div class="mt-3 ml-5">
+                            <form action="checkin_am.php" class="checkin" method="POST" id="checkin1">
+                                <input type="hidden" value="1" name="type">
+                                <input type="hidden" name="latitude" value="">
+                                <input type="hidden" name="longitude" value="">
+                                <button type="submit" name="checkin-am" id="checkin-am" class="btn btn-outline-primary col-sm-3 float-left ml-3 check-in">Check In </button>
+                            </form>
+                        </div>
+
+
+
+                        <div class="mt-2">
+                            <form action="checkout_am_pm.php" method="post" id="checkout1">
+                                <input type="hidden" value="2" name="type">
+                                <button type="submit" name="checkout-am-pm" id="checkout-am-pm" class="btn btn-outline-primary col-sm-3 float-left ml-2 check-out-am-pm">Check-Out AM/PM</button>
+                            </form>
+                        </div>
+
+
+                        <div class="mt-2">
+                            <form action="checkin_pm.php" method="post" id="checkin2">
+                                <input type="hidden" value="3" name="type">
+                                <button type="submit" name="checkin-pm" id="checkin-pm" class="btn btn-outline-primary col-sm-2 float-left ml-2 check-in-pm">Check-In PM</button>
+                            </form>
+                        </div>
+
+
+
+                        <div class="fluid mt-2 ">
+                            <form action="checkout_pm.php" method="post" id="checkout2">
+                                <input type="hidden" value="4" name="type">
+                                <button type="submit" name="checkout-pm" id="checkout-pm" class="btn btn-outline-primary col-sm-2 ml-2 float-left check-out " >Check-Out</button>
+                            </form>
+
+                        </div>
+
+
+                        <!--Response-->
+                        <span type="button" data-toggle="modal" data-target="#exampleModal"  class="btn btn-warning col-sm-3 mb-5 mt-3 ">
+
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
+                                <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z" />
+                            </svg>
+                            Upload Worksheet
+                        </span>
+
+                        <?php 
+include "connect.php";
+$id = $_SESSION['id'];
+//select * from users where MONTH(order_date) = MONTH(now()) and YEAR(order_date) = YEAR(now());
+$sql = "SELECT $id FROM attendance WHERE MONTH(date) = MONTH(now()) WHERE attendance_emp_id = $id";
+$result = mysqli_query($conn,$sql);
+if($result){
+    while($row = mysqli_fetch_row($result)){
+?>
+                        <span type="button" class="btn btn-warning col-sm-3 mb-5 mt-3 ">
+
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
+                                <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z" />
+                            </svg>
+                            Leaves Taken <?php $row['date'];?>
+                        </span>
+<?php }}?>
+                        <script>
+                            var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-trigger="hover focus"]'))
+                            var popoverList = popoverTriggerList.map(function(popoverTriggerEl) {
+                                return new bootstrap.Popover(popoverTriggerEl)
+                            })
+                        </script>
+
+                        <!--Response-->
+
+                        <!-- Modal -->
+                        <form action="sheet.php" method="POST">
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Daily Work Sheet</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="mb-3">
+
+                                                <textarea class="form-control" name="textarea" rows="6" placeholder="Content.."></textarea>
+                                                <script>
+                                                    const text = document.querySelector('textarea');
+                                                    text.addEventListener("keyup", e => {
+                                                        text.style.height = "200px";
+
+                                                        let height = e.target.scrollHeight;
+                                                        text.style.height = '$(height)px'
+                                                    });
+                                                </script>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-primary" name='response'> Add Response </a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        <?php } ?>
-                        <?php
-                        if (empty($row['checkout_pm'])) { ?>
-                            <div class="mt-2">
-                                <form action="checkout_pm.php" method="post" id="checkout2">
-                                    <input type="hidden" value="4" name="type">
-                                    <button type="submit" name="checkout-pm" id="checkout-pm"
-                                        class="btn btn-outline-primary col-sm-6 check-out">Check-Out</button>
-                                </form>
-                            </div>
-                        <?php }else{ ?>
-                        <p> <?php echo $_SESSION['username'] ?> We Meet next day</p>
-                        <?php } ?>
+                        </form>
+
+
                     </div>
                 </div>
             </div>
@@ -242,6 +340,28 @@ if($employee_id){
 </body>
 
 </html>
+
+<script type="text/javascript">
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition, showError);
+        }
+    }
+
+    function showPosition(position) {
+        document.querySelector('.checkin input[name="latitude"]').value = position.coords.latitude;
+        document.querySelector('.checkin input[name="longitude"]').value = position.coords.longitude;
+    }
+
+    function showError(error) {
+        switch (error.code) {
+            case error.PERMISSION_DENIED:
+                alert("Allow Location Access For Login");
+                location.reload();
+                break;
+        }
+    }
+</script>
 
 
 <!--

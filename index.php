@@ -1,6 +1,8 @@
+<?php session_start(); ?>
 <?php include('head.php') ?>
 <?php include('navbar.php') ?>
 <?php include('connect.php'); ?>
+
 <body>
   <div class="page-wrapper">
     <!-- Page header -->
@@ -19,7 +21,24 @@
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
           <script src="ajax.js"></script>
-          <div class="container">
+          
+          
+  <div class="text-green"><strong> 
+    
+    <?php if(isset($_SESSION['success'])){
+        echo $_SESSION['success'];
+        unset($_SESSION['success']);
+        } ?></strong> </div>
+  
+         
+          
+
+          
+      
+       
+      
+      
+
             <p id="success"></p>
             <div class="table-wrapper">
               <div class="table-title">
@@ -28,21 +47,19 @@
                     <h2><b>LIST OF EMPLOYEES</b></h2>
                   </div>
                   <div class="col-sm-6">
+                  
                     <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"> <span>Add
                         Employee</span></a>
-                    <a href="JavaScript:void(0);" class="btn btn-danger" id="delete_multiple"> <span>Delete</span></a>
+                        <a href="#addAdminModal" class="btn btn-info" data-toggle="modal"> <span>Add
+                        New Admin</span></a>
+                    
                   </div>
                 </div>
               </div>
               <table class="table table-striped table-hover">
                 <thead>
                   <tr>
-                    <th>
-                      <span class="custom-checkbox">
-                        <input type="checkbox" id="selectAll">
-                        <label for="selectAll"></label>
-                      </span>
-                    </th>
+                    
                     <th>SL NO</th>
                     <th>NAME</th>
                     <th>TITLE</th>
@@ -62,12 +79,7 @@
                   while ($row = mysqli_fetch_array($result)) {
                     ?>
                     <tr id="<?php echo $row["id"]; ?>">
-                      <td>
-                        <span class="custom-checkbox">
-                          <input type="checkbox" class="user_checkbox" data-user-id="<?php echo $row["id"]; ?>">
-                          <label for="checkbox2"></label>
-                        </span>
-                      </td>
+                      
                       <td>
                         <?php echo $i; ?>
                       </td>
@@ -158,6 +170,37 @@
               </div>
             </div>
           </div>
+
+                   <!-- Add Admin Model -->
+          <div id="addAdminModal" class="modal fade">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <form action="add_admin.php" method="post">
+                  <div class="modal-header">
+                    <h4 class="modal-title">Create New Admin</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="form-group">
+                      <label>Username</label>
+                      <input type="text"  name="username" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="">Password</label>
+                      <input type="password"  name="password" class="form-control" required>
+                    </div>
+                    
+                    
+                  </div>
+                  <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                    <button type="submit" class="btn btn-success" id="liveAlertBtn" name='add'>Add</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
           <!-- Edit Modal HTML -->
           <div id="editEmployeeModal" class="modal fade">
             <div class="modal-dialog">

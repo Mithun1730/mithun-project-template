@@ -6,7 +6,7 @@ if (isset($_POST['checkout-am-pm'])) {
         $emp_id = $_SESSION['id'];
 <<<<<<< Updated upstream
         $id = $_SESSION['att_id'];
-        $date = date('Y-m-d h-i-s');
+        $date = date('Y-m-d H-i-s');
         $sql = "UPDATE attendance SET `checkout_am_pm` = '$date',`attendance_emp_id` = '$emp_id' WHERE attendance_id = $id ";
 
 =======

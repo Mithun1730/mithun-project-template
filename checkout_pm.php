@@ -6,7 +6,7 @@ if (isset($_POST['checkout-pm'])) {
         $hours = $_SESSION['hours'];
         $emp_id = $_SESSION['id'];
         $id = $_SESSION['att_id'];
-        $date = date('Y-m-d h-i-s');
+        $date = date('Y-m-d H-i-s');
         $sql = "UPDATE attendance SET `checkout_pm` = '$date',`attendance_emp_id` = '$emp_id' WHERE attendance_id = $id ";
 =======
         // $hours = $_SESSION['hours'];
@@ -56,15 +56,6 @@ if (isset($_POST['checkout-pm'])) {
 <<<<<<< Updated upstream
 
 
-                                if ($mins >= 60) {
-                                        $hours = $hours + 1;
-                                        $mins = $mins - 60;
-                                }
-
-                                if ($sec >= 60) {
-                                        $sec = $sec - 60;
-                                        $mins = $mins + 1;
-                                }
 
 =======
 >>>>>>> Stashed changes
