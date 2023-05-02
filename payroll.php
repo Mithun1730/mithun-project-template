@@ -106,8 +106,8 @@
                           
                   <td>
                    
-                 <input type="hidden" name="id" value="<?php echo $row['attendance_emp_id'] ?>"> 
-                    <a href= "#payrollmodal" data-toggle="modal" class="edit">Generate
+                  
+                    <a href= "#payrollmodal" data-toggle="modal" class=" btn  generate_form" id="<?php $row['attendance_emp_id']; ?>">Generate
                             </a>
                  
                   </td>
@@ -119,6 +119,11 @@
     </div>
   </div>
 
+  <?php //if(isset($_POST['attendance_emp_id'])){
+ // $sql = "SELECT * FROM attendance WHERE attendance_emp_id = attendance_emp_id ";
+ // $result = mysqli_query($conn,$sql);
+ // if($result){
+  //  while($row = mysqli_fetch_row($result)){?> 
 
   <div id="payrollmodal" class="modal fade">
     <div class="modal-dialog">
@@ -131,7 +136,7 @@
           <div class="modal-body">
           <div class="form-group">
               <label>ID</label>
-              <?php ?>
+              <?php // $row['attendance_emp_id'] ; ?>
               <input type="text" id="id"  name="id" class="form-control" required>
             </div>
             <div class="form-group">
@@ -175,9 +180,27 @@
       </div>
     </div>
   </div>
-
+  <?php // }}} ?>
 </body>
 <?php include('footer.php') ?>
 
   
+<!--
+<script>
+  $(document).ready(function(){
+    $('.generate_form').click(function(){
+      var id = $(this).attr("id");
 
+      $.ajax({
+   //     url : 'generation.php',
+       // method:'post',
+     data:{id:id},
+        success : function(data){
+          $('#payrollmodal').html(data);
+          $("#payrollmodal").modal("show");
+        }
+      })
+      
+    })
+  })
+</script> -->

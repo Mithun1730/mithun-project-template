@@ -4,16 +4,13 @@ session_start();
 
 include('connect.php');
 include('head.php');
-
-$employee_id = $_SESSION['id'];
-$result = mysqli_query($conn, "SELECT * FROM attendance where attendance_emp_id = $employee_id");
-$row = mysqli_fetch_array($result);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-
+    <script src="/dist/js/popper.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -53,7 +50,7 @@ $row = mysqli_fetch_array($result);
 
 <body onload="getLocation();" class="bg-primary">
     <div class="page page-center">
-        <div class="container-fluid w-50 p-3">
+        <div class="container-fluid w-75 p-3">
 
             <div class="card card-md mx-auto bg-primary">
 
@@ -108,7 +105,8 @@ $row = mysqli_fetch_array($result);
                                                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                                 <path d="M5 12l5 5l10 -10" />
                                             </svg>
-                                            <?php echo $_SESSION['status']; ?>
+                                            <?php echo $_SESSION['status']; 
+                                            unset($_SESSION['status']);?>
                                         </h5>
                                     </div>
                                 </div>
@@ -121,7 +119,8 @@ $row = mysqli_fetch_array($result);
                                                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                                 <path d="M5 12l5 5l10 -10" />
                                             </svg>
-                                            <?php echo $_SESSION['status1']; ?>
+                                            <?php echo $_SESSION['status1']; 
+                                            unset($_SESSION['status1']);?>
                                         </h5>
                                     </div>
                                 </div>
@@ -135,7 +134,8 @@ $row = mysqli_fetch_array($result);
                                                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                                 <path d="M5 12l5 5l10 -10" />
                                             </svg>
-                                            <?php echo $_SESSION['status2']; ?>
+                                            <?php echo $_SESSION['status2']; 
+                                            unset($_SESSION['status2']);?>
                                         </h5>
                                     </div>
                                 </div>
@@ -148,7 +148,8 @@ $row = mysqli_fetch_array($result);
                                                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                                 <path d="M5 12l5 5l10 -10" />
                                             </svg>
-                                            <?php echo $_SESSION['status3']; ?>
+                                            <?php echo $_SESSION['status3']; 
+                                            unset($_SESSION['status3']);?>
                                         </h5>
                                     </div>
                                 </div>
@@ -156,21 +157,21 @@ $row = mysqli_fetch_array($result);
                         </div>
 
 
-                        <div class="mt-3">
+                        <div class="mt-3 ml-5">
                             <form action="checkin_am.php" class="checkin" method="POST" id="checkin1">
                                 <input type="hidden" value="1" name="type">
                                 <input type="hidden" name="latitude" value="">
                                 <input type="hidden" name="longitude" value="">
-                                <button type="submit" name="checkin-am" id="checkin-am" class="btn btn-outline-primary col-sm-5 check-in">Check In </button>
+                                <button type="submit" name="checkin-am" id="checkin-am" class="btn btn-outline-primary col-sm-3 float-left ml-3 check-in">Check In </button>
                             </form>
-                        </div>    
-                                                   
+                        </div>
+
 
 
                         <div class="mt-2">
                             <form action="checkout_am_pm.php" method="post" id="checkout1">
                                 <input type="hidden" value="2" name="type">
-                                <button type="submit" name="checkout-am-pm" id="checkout-am-pm" class="btn btn-outline-primary col-sm-5 check-out-am-pm">Check-Out AM/PM</button>
+                                <button type="submit" name="checkout-am-pm" id="checkout-am-pm" class="btn btn-outline-primary col-sm-3 float-left ml-2 check-out-am-pm">Check-Out AM/PM</button>
                             </form>
                         </div>
 
@@ -178,29 +179,53 @@ $row = mysqli_fetch_array($result);
                         <div class="mt-2">
                             <form action="checkin_pm.php" method="post" id="checkin2">
                                 <input type="hidden" value="3" name="type">
-                                <button type="submit" name="checkin-pm" id="checkin-pm" class="btn btn-outline-primary col-sm-5 check-in-pm">Check-In PM</button>
+                                <button type="submit" name="checkin-pm" id="checkin-pm" class="btn btn-outline-primary col-sm-2 float-left ml-2 check-in-pm">Check-In PM</button>
                             </form>
                         </div>
 
 
 
-                        <div class="fluid mt-2">
+                        <div class="fluid mt-2 ">
                             <form action="checkout_pm.php" method="post" id="checkout2">
                                 <input type="hidden" value="4" name="type">
-                                <button type="submit" name="checkout-pm" id="checkout-pm" class="btn btn-outline-primary col-sm-5 check-out">Check-Out</button>
+                                <button type="submit" name="checkout-pm" id="checkout-pm" class="btn btn-outline-primary col-sm-2 ml-2 float-left check-out " >Check-Out</button>
                             </form>
 
                         </div>
 
 
                         <!--Response-->
-                        <button type="button" class="btn btn-warning col-sm-1-pd mb-5 mr-3 float-right" data-toggle="modal" data-target="#exampleModal">
-                            <span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
-                                    <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z" />
-                                </svg>
-                            </span>
-                        </button>
+                        <span type="button" data-toggle="modal" data-target="#exampleModal"  class="btn btn-warning col-sm-3 mb-5 mt-3 ">
+
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
+                                <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z" />
+                            </svg>
+                            Upload Worksheet
+                        </span>
+
+                        <?php 
+include "connect.php";
+$id = $_SESSION['id'];
+//select * from users where MONTH(order_date) = MONTH(now()) and YEAR(order_date) = YEAR(now());
+$sql = "SELECT $id FROM attendance WHERE MONTH(date) = MONTH(now()) WHERE attendance_emp_id = $id";
+$result = mysqli_query($conn,$sql);
+if($result){
+    while($row = mysqli_fetch_row($result)){
+?>
+                        <span type="button" class="btn btn-warning col-sm-3 mb-5 mt-3 ">
+
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
+                                <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z" />
+                            </svg>
+                            Leaves Taken <?php $row['date'];?>
+                        </span>
+<?php }}?>
+                        <script>
+                            var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-trigger="hover focus"]'))
+                            var popoverList = popoverTriggerList.map(function(popoverTriggerEl) {
+                                return new bootstrap.Popover(popoverTriggerEl)
+                            })
+                        </script>
 
                         <!--Response-->
 

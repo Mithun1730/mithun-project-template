@@ -1,4 +1,9 @@
-<div id="payrollmodal" class="modal fade">
+<?php if(isset($_POST['attendance_emp_id'])){
+  $sql = "SELECT * FROM attendance WHERE attendance_emp_id = attendance_emp_id ";
+  $result = mysqli_query($conn,$sql);
+  if($result){
+    while($row = mysqli_fetch_row($result)){?>
+    <div id="payrollmodal" class="modal fade">
     <div class="modal-dialog">
       <div class="modal-content">
         <form id="user_form" action="pdf_generator.php" method="post">
@@ -48,3 +53,4 @@
       </div>
     </div>
   </div>
+  <?php }}} ?>

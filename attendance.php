@@ -77,7 +77,7 @@
                       foreach ($res as $row) { ?>
                 <tr>
                   <td> <?php echo $row['emp_name'] ?> </td>
-                  <td> <a href='#' data-bs-toggle="popover" data-bs-placement="left" data-bs-content="<?php if (!empty($row['daily_report'])) {
+                  <td> <a href='#' data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-placement="left" data-bs-content="<?php if (!empty($row['daily_report'])) {
                                                                                             echo $row['daily_report'];
                                                                                           } else {
                                                                                             echo 'No record found!';
@@ -89,7 +89,7 @@
                     </span></a>
                   </td>
                   <td>
-                  <a href='#' data-bs-toggle="popover"  data-bs-content="<?php if (!empty($row['location'])) {
+                  <a href='#' data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="<?php if (!empty($row['location'])) {
                                                                                             echo $row['location'];
                                                                                           } else {
                                                                                             echo 'No record found!';
@@ -188,8 +188,14 @@
                 </script>
 
                 <td>
+                  <script>
 
-                  <a href='#' data-bs-toggle="popover" data-bs-placement="left"  data-bs-content="<?php if (!empty($row['daily_report'])) {
+                var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-trigger="hover focus"]'))
+var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+  return new bootstrap.Popover(popoverTriggerEl)
+})</script>
+
+                  <a href='#' data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-placement="left"  data-bs-content="<?php if (!empty($row['daily_report'])) {
                                                                                             echo $row['daily_report'];
                                                                                           } else {
                                                                                             echo 'No record found!';
@@ -202,7 +208,7 @@
                 </td>
 
                 <td>
-                <a href='#' data-bs-toggle="popover"  data-bs-content="<?php if (!empty($row['location'])) {
+                <a href='#' data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="<?php if (!empty($row['location'])) {
                                                                                             echo $row['location'];
                                                                                           } else {
                                                                                             echo 'No record found!';

@@ -52,6 +52,7 @@
             <th>Title</th>
             <th>Email</th>
             <th>Leaves Taken</th>
+            <th>Days</th>
             <th class="w-1"></th>
           </tr>
         </thead>
@@ -60,23 +61,49 @@
           <?php
   include "connect.php";
   if (isset($_GET['from']) && isset($_GET['to'])) {
-    $from = $_GET['from'];
-    $to = $_GET['to'];
-    $secs_per_day = 24 * 60 * 60;
-    $diff = abs( (strtotime($from) - strtotime($to)) / $secs_per_day ) + 1;
+    //$from =  $_GET['from'];
+    //$to =  $_GET['to'];
+    //$query = "SELECT * FROM attendance WHERE date >= $from AND date =<$to";
+    //$result_query = mysqli_query($conn,$query);
+    //if($result_query){ 
+    $start = new DateTime($_GET['from']);
+    $end = new DateTime($_GET['to']);
+// otherwise the  end date is excluded (bug?)
+$end->modify('+1 day');
+
+$interval = $end->diff($start);
+
+// total days
+$days = $interval->days;
+
+// create an iterateable period of date (P1D equates to 1 day)
+$period = new DatePeriod($start, new DateInterval('P1D'), $end);
+
+// best stored as array, so you can add more than one
+ //$holidays = array('2023-05-01');
+
+foreach($period as $dt) {
+    $curr = $dt->format('D');
+
+    // substract if Saturday or Sunday
+    if ( $curr == 'Sun') {
+        $days--;
+    }
+
+  // (optional) for the updated question
+   //   elseif (in_array($dt->format('Y-m-d'), $holidays)) {
+   // $days--;
+   // }
+}
     
 
    
     //SELECT attendance_emp_id, count(emp_name) AS present ,emp_name,emp_email,emp_title FROM attendance GROUP BY attendance_emp_id
-    $sql="SELECT attendance_emp_id, count(emp_name) AS present,emp_name,emp_email,emp_title FROM attendance GROUP BY attendance_emp_id ";
+    $sql="SELECT attendance_emp_id, count(emp_name) AS present,emp_name,emp_email,emp_title,GROUP_CONCAT(date) AS dates FROM attendance GROUP BY attendance_emp_id ";
     $result = mysqli_query($conn,$sql);
     if($result){
       while($row = mysqli_fetch_array($result)){
 
-        // $sql2= " SELECT attendance_emp_id, count(emp_name) AS present FROM attendance GROUP BY $id ";
-          //  $result2 = mysqli_query($conn,$sql2);
-           // if($result2){
-           // while($row2 = mysqli_fetch_assoc($result2)){
         ?>
             <td><?php echo $row['emp_name']?></td>
 
@@ -87,17 +114,21 @@
             <td class="text-muted"><a href="#" class="text-reset"><?php echo $row['emp_email']?></a></td>
             
             <td class="text-muted">
-            <?php  echo abs($diff - $row['present']); ?>
+            <?php  echo abs($days - $row['present'] ); ?>
             </td>
-      
+
+            <td><?php // echo $row['dates']?></td>
+
             <td>
               <a href="#">Edit</a>
             </td>
+
           </tr>
-          <?php } } }  ?>
+          <?php } } } ?>
         </tbody>
       </table>
     </div>
   </div>
 </div>
 <?php include('footer.php') ?>
+

@@ -23,5 +23,5 @@ $street = $address['road'];
 $city = $address['city'];
 $state = $address['state'];
 $country = $address['country'];
-echo "$street, $city, $state.";
+echo "$address";
 ?>
