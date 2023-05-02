@@ -3,12 +3,21 @@
 session_start();
 
 include('connect.php');
+<<<<<<< HEAD
+include "head.php";
+$employee_id = $_SESSION['id'];
+if($employee_id){
+    $result = mysqli_query($conn, "SELECT * FROM attendance where attendance_emp_id = $employee_id");
+    $row = mysqli_fetch_array($result);
+}
+=======
 include('head.php');
+>>>>>>> main
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-
+<?php echo'<h1>session id = '.$_SESSION['id'].'</h1>' ?>
 <head>
     <script src="/dist/js/popper.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -155,6 +164,63 @@ include('head.php');
                                 </div>
                             <?php } ?>
                         </div>
+<<<<<<< HEAD
+<<<<<<< Updated upstream
+                        <?php
+                        if (empty($row['checkin_am'])) { ?>
+=======
+
+                        <?php if (isset($_SESSION['id'])) { ?>
+
+>>>>>>> Stashed changes
+                            <div class="mt-3">
+                                <form action="checkin_am.php" method="POST" id="checkin1">
+                                    <input type="hidden" value="1" name="type">
+                                    <button type="submit" name="checkin-am" id="checkin-am"
+                                        class="btn btn-outline-primary col-sm-6 check-in">Check In </button>
+                                </form>
+                            </div>
+<<<<<<< Updated upstream
+                        <?php } ?>
+                        <?php
+                        if (empty($row['checkout_am_pm'])) { ?>
+                            <div class="mt-2">
+                                <form action="checkout_am_pm.php" method="post" id="checkout1">
+                                    <input type="hidden" value="2" name="type">
+                                    <button type="submit" name="checkout-am-pm" id="checkout-am-pm"
+                                        class="btn btn-outline-primary col-sm-6 check-out-am-pm">Check-Out AM/PM</button>
+                                </form>
+                            </div>
+                        <?php } ?>
+=======
+                    <?php } ?>
+
+
+                        <div class="mt-2">
+                            <form action="checkout_am_pm.php" method="post" id="checkout1">
+                                <input type="hidden" value="2" name="type">
+                                <button type="submit" name="checkout-am-pm" id="checkout-am-pm" class="btn btn-outline-primary col-sm-6 check-out-am-pm">Check-Out AM/PM</button>
+                            </form>
+                        </div>
+
+
+                        <div class="mt-2">
+                            <form action="checkin_pm.php" method="post" id="checkin2">
+                                <input type="hidden" value="3" name="type">
+                                <button type="submit" name="checkin-pm" id="checkin-pm" class="btn btn-outline-primary col-sm-6 check-in-pm">Check-In PM</button>
+                            </form>
+                        </div>
+
+                        <div class="mt-2">
+                            <form action="checkout_pm.php" method="post" id="checkout2">
+                                <input type="hidden" value="4" name="type">
+                                <button type="submit" name="checkout-pm" id="checkout-pm" class="btn btn-outline-primary col-sm-6 check-out">Check-Out</button>
+                            </form>
+                        </div>
+
+>>>>>>> Stashed changes
+=======
+>>>>>>> main
 
 
                         <div class="mt-3 ml-5">

@@ -13,6 +13,10 @@ if (isset($_POST['checkin-am'])) {
   $check_in_am = date("Y-m-d H-i-s");
   $date = date("Y-m-d");
 
+<<<<<<< HEAD
+<<<<<<< Updated upstream
+    $sql = "INSERT INTO attendance (`attendance_emp_id`,`emp_name`,`emp_email`,`checkin_am`,`date`) VALUES ('$id','$name','$email','$check_in_am','$date')";
+=======
 $access_token = "pk.3516c19fe24eb4340b2eb09318c3abc7";
 $latitude = $_POST['latitude'];
 $longitude = $_POST['longitude'];
@@ -47,10 +51,31 @@ $country = $address['country'];
     $last = mysqli_insert_id($conn);
     $_SESSION['att_id'] = $last;
     $_SESSION['status'] = "Check In AM Inserted";
+>>>>>>> main
 
     header('location:home2.php');
+<<<<<<< HEAD
+    }
+=======
+    $sql = "INSERT INTO attendance (`attendance_emp_id`,`emp_name`,`emp_title`,`emp_email`,`checkin_am`,`date`) VALUES ('$id','$name','$title','$email','$check_in_am','$date')";
+    $result = mysqli_query($conn, $sql);
+    header('location:home2.php');
+
+    // $result = mysqli_query($conn, $sql);
+    // if($result){
+    // $last=mysqli_insert_id($conn);
+    // $_SESSION['att_id']=$last;
+    // $_SESSION['status']="Check In AM Inserted";
+    
+    // header('location:home2.php');
+    // echo ' <button type= "submit" name="checkin-am" id="checkin-am" class="btn btn-outline-primary col-sm-6 check-in" disabled>Check In </button>';
+    
+    // }
+>>>>>>> Stashed changes
+=======
     echo ' <button type= "submit" name="checkin-am" id="checkin-am" class="btn btn-outline-primary col-sm-6 check-in" disabled>Check In </button>';
   }
+>>>>>>> main
 }
 
 ?>
